@@ -1,0 +1,270 @@
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@charset "UTF-8";
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+
+#deeaee
+#618685;
+#c94c4c;
+*/
+
+html body {
+  background-color: #deeaee;
+}
+
+.jumbotron {
+  font-family: 'Hanna', serif;
+  text-align: center;
+  height: 250px;
+  max-height: 250px;
+}
+
+.jumbotron-billboard .img {
+  margin-bottom: 0px;
+  opacity: 0.2;
+  color: #fff;
+  background: #000 url("../img/main.jpg") center center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.jumbotron {
+  position: relative;
+  padding: 50px;
+}
+
+.jumbotron .container {
+  z-index: 2;
+  position: relative;
+  z-index: 2;
+}
+
+/*게시판 영역*/
+.board_area {
+  background-color: white;
+  border: none;
+}
+
+.board-heading {
+  background-color: #002F2F;
+  padding: 20px;
+  height: 80px;
+}
+
+#writebutton {
+  float: left;
+  font-family: 'Hanna', serif;
+}
+
+#write {
+  padding: 10px 20px;
+  background-color: #618685;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+#write:hover {
+  color: gold;
+}
+
+#search_bar{
+  border: 1px #002F2F solid;
+}
+
+#searchCheck {
+  font-family: 'Hanna', serif;
+  margin-left: 30px;
+  display: inline-block;
+  width: 150px;
+}
+
+#search_bar input[type=text] {
+  border: 3px #002F2F solid;
+  padding: 7px;
+  width: 300px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+#search_bar input[type=text]:focus {
+  border: 3px skyblue solid;
+  width: 66%;
+}
+
+.sort_options {
+  float: right;
+  font-family: 'Hanna', serif;
+}
+
+.sort_options select:hover, .sort_options option:hover {
+  cursor: pointer;
+}
+
+.sort_options .selectpicker {}
+
+.board-body {
+  padding: 20px;
+}
+
+#myTable {
+  font-family: 'Nanum Gothic';
+  border-collapse: collapse;
+  width: 100%;
+  table-layout:auto;
+}
+
+#myTable thead {
+  border-bottom: 2px grey solid;
+  text-align: center;
+  font-weight: bold;
+}
+
+#myTable th {
+  text-align: center;
+  padding: 6px;
+  background: #618685;
+  color: white;
+}
+
+#myTable td {
+  word-wrap:break-word;
+  white-space: nowrap;
+  /*overflow: hidden;*/
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+#table_num {
+  text-align: center;
+  width: 60px;
+}
+
+#td_title {
+  width: 50%;
+  overflow: hidden;
+ }
+
+#td_title a {
+  color: black;
+}
+
+/*카테고리 사이즈*/
+#myTable td:nth-child(3) {
+  /*border: 1px gold dotted;*/
+  width: 110px;
+}
+
+#table_category {
+  text-align: center;
+}
+
+/*작성자 사이즈*/
+#myTable td:nth-child(4) {
+  /*border: 1px gold dotted;*/
+  text-align: center;
+  width: 100px;
+  color: black;
+}
+
+#tooltip {
+    position: relative;
+    display: inline-block;
+    overflow: visible !important;
+}
+
+#tooltip #tooltiptext {
+    visibility: hidden;
+    width: 240px;
+    height: 120px;
+    background-color: #EFECCA;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px grey;
+    position: absolute;
+    z-index: 1;
+    overflow: visible !important;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -120px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+#tooltip:hover #tooltiptext {
+overflow: visible !important;
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip_1{
+height: 70%;
+}
+
+.tooltip_2{
+  height: 30%;
+  background-color: white;
+}
+
+.profile_pics {
+	width: 20px;
+	height: 20px;
+	border: 2px solid Gainsboro;
+  border-radius: 50%;
+}
+
+#myTable td {
+  padding: 3px;
+  font-size: 0.9vw;
+}
+
+#table_point {
+  text-align: center;
+}
+
+#table_viewcount {
+  text-align: center;
+}
+
+#table_date {
+  text-align: center;
+}
+
+#myTable tr:nth-child(even) {
+  background-color: #deeaee;
+}
+
+#reply_num {
+  color: blue;
+}
+
+#iloadMore{
+  width: 100%;
+  font-family: 'Hanna', serif;
+  color: white;
+  padding: 10px;
+  border: none;
+  background-color: #618685;
+  margin: auto;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#iloadMore:hover{
+  color: gold;
+}

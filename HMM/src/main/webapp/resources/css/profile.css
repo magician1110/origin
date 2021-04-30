@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+*{
+	  font-family: 'Hanna', serif;
+}
+
+html body {
+  background-color: #deeaee;
+}
+
+.container{
+	border: 1px right: ; solid;
+}
+
+.profile_area.banner{
+  box-shadow: 2px 2px 2px grey;
+	border-radius: 6px;
+}
+
+.profile_area{
+	display: inline-block;
+	width: 100%;
+	background-color: #EFECCA;
+	padding: 30px;
+	margin-top: 30px;
+}
+
+.profile_area .profile_img{
+	float: left;
+	width: 30%;
+}
+
+#profile_user_img{
+	width: 25%;
+	height: 25%;
+	min-width: 250px;
+	min-height: 250px;
+	max-width: 600px;
+	max-height: 600px;
+	border-radius: 50%;
+	border: 6px skyblue solid;
+}
+
+.profile_id{
+	display: inline-block;
+}

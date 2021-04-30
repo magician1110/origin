@@ -1,0 +1,367 @@
+@charset "UTF-8";
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+
+#deeaee
+#618685;
+#c94c4c;
+*/
+
+* {
+  //border: 1px gold solid;
+}
+
+
+html body {
+  background-color: #deeaee;
+}
+
+.boardDetail_area{
+  //border: 1px gold solid;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #002F2F;
+  border-radius: 10px;
+}
+
+.boardDetail {
+  border-radius: 10px;
+}
+
+.boardDetail button {
+  font-family: 'Hanna', serif;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  width: 100px;
+}
+
+.boardDetail button:hover {
+  color: gold;
+}
+
+.boardDetail-header {
+  display: block;
+  color: white;
+  font-family: 'Hanna', serif;
+  height: auto;
+  padding: 20px 20px 0 20px;
+  width: 100%;
+  font-size: 1vw;
+  word-wrap: break-word;
+}
+
+.boardDetail-header input {
+  background-color: #002F2F;
+}
+
+.boardDetail_title {
+}
+
+#posted_from {
+  font-size: 16px;
+  color: silver;
+  text-decoration: none;
+}
+
+#posted_from:hover{
+  color: white;
+}
+
+.boardDetail_author{
+  border-top: 2px white solid;
+  padding: 10px;
+}
+
+.boardDetail_author input{
+  //border: 1px gold solid;
+  width: 30px;
+  border: none;
+}
+
+#writer_img{
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  float: right;
+  border: 4px skyblue solid;
+  margin-left: 20px;
+}
+
+#bMedal {
+  background-color: gold;
+  color: black;
+  transition: transform 0.5s;
+}
+
+#bMedal:hover {
+  transform: scale(1.2);
+}
+
+#board_viewcount{
+  float: right;
+  margin-right: 20px;
+}
+
+#board_postdate {
+  float: right;
+}
+
+.boardDetail-contents {
+  background-color: white;
+  padding: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: auto;
+  height: auto;
+}
+
+#boardDetail-content{
+  word-wrap: break-word;
+}
+
+#bedit{
+  background-color: #618685;
+  margin-top: 15px;
+  margin-left: 15px;
+  color: white;
+}
+
+#post_comment{
+  background-color: #618685;
+  color: white;
+}
+
+#post_comment:hover{
+  color: gold;
+}
+
+#report_post{
+  float: right;
+  background-color: red;
+  width: 150px;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.boardDetail-footer {
+  font-family: 'Hanna', serif;
+  background-color: white;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.post_rate_btns{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.5s;
+}
+
+.post_rate_btns:hover{
+  transform: scale(1.2);
+}
+
+#bBest{
+  color: white;
+  margin-left: 5px;
+  background-color: gold;
+}
+
+#bGood{
+  color: white;
+  background-color: green;
+}
+
+#bBad{
+  color: white;
+  background-color: grey;
+}
+
+#bWorst{
+  color: white;
+  background-color: red;
+}
+
+#post_score_total{
+  margin-top: 15px;
+  float: right;
+}
+
+.comment_section{
+  background-color: #002F2F;
+  width: 100%;
+}
+
+.comment_section button {
+  font-family: 'Hanna', serif;
+  color: black;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+#newCArea {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+#newCArea:focus{
+  border: 3px skyblue solid;
+}
+
+.comments, #newcomments, #newRecomment, .recomments{
+  margin-bottom: 20px;
+  background-color: white;
+  height: auto;
+}
+
+.recomments {
+	padding-left:20px;
+}
+
+.comments-heading{
+  height: 50px;
+  font-family: 'Hanna', serif;
+  background-color: #002F2F;
+  color: white;
+}
+
+.comments-heading a{
+  color: white;
+}
+
+.comments-heading a:hover{
+  text-decoration: none;
+  color: gold;
+}
+
+#reply_number{
+  padding-left: 10px;
+  margin-right: 10px;
+}
+
+#comment_writer{
+  float: left;
+  margin-left: 10px;
+  position: relative;
+  top: 50%;
+  transform: 			translateY(-50%);
+}
+
+.current_medal_number{
+  color: gold;
+  font-size: 20px;
+}
+
+#bmedal{
+    font-size: 16px;
+}
+
+#comment_date{
+  margin-right: 10px;
+  float: right;
+  position: relative;
+  top: 50%;
+  transform: 			translateY(-50%);
+}
+
+#report_comment{
+  border-radius: 5px;
+  padding: 5px;
+  background-color: red;
+  color: white;
+  float: right;
+  position: relative;
+	top: 50%;
+	transform: 			translateY(-50%);
+  margin-right: 10px;
+}
+
+#the_medal{
+}
+
+.comments-body{
+  height: auto;
+  padding: 15px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.comments-footer{
+  font-family: 'Hanna', serif;
+  height: 50px;
+  border-top: 1px silver solid;
+}
+
+.comment_edit_add{
+  float: left;
+  margin-left: 10px;
+}
+
+.comment_edit_add button{
+  background-color: #618685;
+  padding: 5px;
+  color: white;
+  width: auto;
+  margin: auto;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.comment_rate {
+  float: right;
+  margin-right: 10px;
+}
+
+.comment_rate button{
+  width: 70px;
+  margin: auto;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+.comment_rate_btn{
+  transition: transform 0.5s;
+}
+
+.comment_rate_btn:hover{
+  transform: scale(1.2);
+}
+
+#give_medal{
+  background-color: gold;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  padding: 8px;
+}
+
+#comment_point {
+  margin-right: 10px;
+}
+
+#btn_good  {
+  background-color: pink;
+}
+
+#btn_bad{
+  background-color: skyblue;
+}
+
+.comment_section {
+
+}
+
+.one_comment:hover {
+}

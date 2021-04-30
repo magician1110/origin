@@ -1,0 +1,100 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+
+#deeaee
+#618685;
+#c94c4c;
+*/
+
+* {
+  //border: 1px gold dotted;
+}
+
+.bottomnav {
+  font-family: 'Hanna', serif;
+  background-color: #002F2F;
+  padding: 250px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 210px;
+  border-bottom: 1px silver solid;
+  margin-bottom: 0px;
+}
+
+.text-center{
+  padding: 20px;
+  font-size: 30px;
+}
+
+.col-sm-5{
+  padding: 20px;
+  font-size: 20px;
+}
+
+.bottomnav ul {
+  list-style: none;
+  line-height: 40px;
+}
+
+.bottomnav ul li a {
+  font-size: 20px;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.bottomnav ul li a:hover {
+  color: gold;
+  font-size: 24px;
+  transition: 0.4s;
+}
+
+#contact {
+  font-family: 'Hanna', serif;
+  background-color: #002F2F;
+  color: white;
+}
+
+#contact input {
+}
+
+#name{
+  display: none;
+}
+
+/* #email{
+  display: none;
+} */
+
+#footer_submit {
+  color: white;
+  background-color: #618685;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+#footer_submit:hover {
+  color: gold;
+}
+
+#footer_end{
+  text-align: center;
+  background-color: #002F2F;
+  height:100px;
+  width:100%;
+}
+
+#footer_end .up-arrow{
+  color: white;
+  font-size: 40px;
+  bottom: 0;
+  padding: 20px;
+}

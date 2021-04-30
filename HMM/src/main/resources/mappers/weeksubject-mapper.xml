@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="weeksubjectMapper">
+
+ 	<resultMap id="weeksubjecttMap" type="Weeksubject"></resultMap>
+	
+	<select id="selectWeek" resultType="Weeksubject">
+		SELECT *
+		FROM WEEKSUBJECT
+		WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+7
+	</select>		
+		
+	<insert id="proInsert" parameterType="hashmap">
+		INSERT INTO PROLIST 
+		VALUES(#{wscode},#{id})
+	</insert>
+	
+	<select id="proCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM PROLIST
+		WHERE WSCODE=(
+						SELECT WSCODE
+					 	FROM WEEKSUBJECT 
+					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+7
+					 )
+	</select>
+	
+	<insert id="conInsert" parameterType="hashmap">
+		INSERT INTO CONLIST
+		VALUES(#{wscode},#{id})
+	</insert>
+	
+	<select id="conCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM CONLIST
+		WHERE WSCODE=(
+						SELECT WSCODE
+					 	FROM WEEKSUBJECT 
+					 	WHERE SYSDATE BETWEEN STARTDATE AND STARTDATE+7
+					 )
+	</select>
+	
+	<select id="pcSearch" resultType="java.lang.Integer" parameterType="string">
+		SELECT ((SELECT COUNT(*) FROM PROLIST WHERE ID=#{id})*1+(SELECT COUNT(*) FROM CONLIST WHERE ID=#{id})*2)
+		FROM DUAL
+	</select>
+	
+	<select id="selectDate" resultType="date">
+		SELECT STARTDATE
+		FROM WEEKSUBJECT
+		WHERE STARTDATE &lt; SYSDATE-7
+		ORDER BY 1
+	</select>
+	
+	<select id="selectSubject" resultType="string">
+		SELECT TITLE
+		FROM WEEKSUBJECT
+		WHERE STARTDATE &lt; SYSDATE-7
+		ORDER BY STARTDATE
+	</select>
+	
+	<select id="hproCount" resultType="java.lang.Integer" parameterType="_int">
+		SELECT COUNT(*)
+		FROM PROLIST
+		WHERE WSCODE=#{wscode}
+	</select>
+	
+	<select id="hconCount" resultType="java.lang.Integer" parameterType="_int">
+		SELECT COUNT(*)
+		FROM CONLIST
+		WHERE WSCODE=#{wscode}
+	</select>
+	
+	<select id="selectYWsubject" resultType="Weeksubject" parameterType="hashmap">
+		SELECT *
+		FROM WEEKSUBJECT
+		WHERE STARTDATE BETWEEN TO_DATE(#{first}||'0101','RRRRMMDD') AND TO_DATE(#{second}||'1231','RRRRMMDD')
+	</select>
+	
+	<select id="selectWeekList" resultType="Weeksubject">
+		SELECT *
+		FROM WEEKSUBJECT
+		WHERE STARTDATE&lt;=SYSDATE+62
+		ORDER BY STARTDATE DESC
+	</select>
+	
+	<update id="updateWeekSubject" parameterType="hashmap">
+		UPDATE WEEKSUBJECT
+		SET TITLE=#{title}, AGREE=#{agree}, DISAGREE=#{disagree}
+		WHERE WSCODE=#{wscode}
+	</update>
+</mapper>

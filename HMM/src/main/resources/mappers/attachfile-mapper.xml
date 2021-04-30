@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="attachfileMapper">
+
+ 	<resultMap id="attachfileResultMap" type="Attachfile"></resultMap>
+ 	
+	
+	<select id="attachfileList" resultType="Attachfile" parameterType="_int">
+		SELECT *
+		FROM ATTACHFILE
+		WHERE BCODE=#{bcode}
+	</select>
+	
+	<insert id="attachInsert" parameterType="Attachfile">
+		INSERT INTO ATTACHFILE
+		VALUES(ATTACHFILE_SEQ.NEXTVAL,#{originname},#{changedname},#{bcode},#{filelink})
+	</insert>
+	
+	<delete id="attachDelete" parameterType="_int">
+		DELETE 
+		FROM ATTACHFILE
+		WHERE ATCODE=#{atcode}
+	</delete>
+	
+	<update id="attachUpdate" parameterType="Attachfile">
+		UPDATE ATTACHFILE
+		SET (
+				ORIGINNAME=#{originname},CHANGEDNAME=#{changedname},FILELINK=#{filelink}
+			)
+		WHERE ATCODE=#{atcode}
+		AND BCODE=#{bcode}
+	</update>
+	
+	<select id="selectFileOne" parameterType="_int" resultType="Attachfile">
+		SELECT *
+		FROM ATTACHFILE
+		WHERE ATCODE=#{atcode}
+	</select>
+	
+</mapper>

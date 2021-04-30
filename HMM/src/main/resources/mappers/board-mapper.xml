@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+	<resultMap id="boardMap" type="Board">
+		<id column="BCODE" property="bcode" />
+		<result column="TITLE" property="title" />
+		<result column="CONTENT" property="content" />
+		<result column="DISTINGUISH" property="distinguish" />
+		<result column="WRITERID" property="writerid" />
+		<result column="POSTDATE" property="postdate" />
+		<result column="ISDELETE" property="isdelete" />
+		<result column="HASFILE" property="hasfile" />
+		<result column="PHOTO" property="photo" />
+		<result column="LEVELITEM" property="levelitem" />
+		<association property="code" javaType="BoardCode">
+			<id column="DISCODE" property="discode" />
+			<result column="NAME" property="name" />
+		</association>
+		<association property="point" javaType="BoardPoint">
+			<id column="CB" property="bcode" />
+			<result column="VIEWNUM" property="viewnum" />
+			<result column="BEST" property="best" />
+			<result column="GOOD" property="good" />
+			<result column="BAD" property="bad" />
+			<result column="WORST" property="worst" />
+			<result column="CAL" property="cal" />
+			<result column="MEDAL" property="medal" />
+			<result column="REPORT" property="report" />
+		</association>
+	</resultMap>
+
+	<sql id="boardTemplate">
+		SELECT A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE,A.HASFILE,
+		B.DISCODE,B.NAME,
+		C.BCODE CB,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
+		(SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE,
+		E.PHOTO,E.LEVELITEM
+		FROM BOARD A
+		JOIN BOARDCODE B
+		ON A.DISTINGUISH=B.DISCODE
+		JOIN BOARDPOINT C
+		ON A.BCODE=C.BCODE
+		JOIN MEMBER E
+		ON A.WRITERID = E.ID
+	</sql>
+	
+	<sql id="boardTemplate2">
+		SELECT ROW_NUMBER() OVER (ORDER BY ${alias}) RNUM, A.BCODE,A.TITLE,A.CONTENT,A.DISTINGUISH,A.WRITERID,TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE,A.HASFILE,
+		            B.DISCODE,B.NAME,
+		            C.BCODE CB,C.VIEWNUM,C.BEST,C.GOOD,C.BAD,C.WORST,C.CAL,C.MEDAL,C.REPORT,
+		            (SELECT TO_CHAR(COUNT(*)) FROM COMMENTS D WHERE A.BCODE=D.BCODE) ISDELETE,
+		            E.PHOTO, E.LEVELITEM
+		FROM BOARD A
+		JOIN BOARDCODE B ON A.DISTINGUISH=B.DISCODE
+		JOIN BOARDPOINT C ON A.BCODE=C.BCODE
+		JOIN MEMBER E ON A.WRITERID = E.ID
+		WHERE ISDELETE IS NULL  
+	</sql>
+
+	<select id="selectAllBoardList" resultMap="boardMap" parameterType="hashmap">
+		SELECT D.*
+		FROM( <include refid="boardTemplate2">
+				<property name="alias" value="${sort}"/>
+			  </include>
+			  <if test="dis!=0">AND A.DISTINGUISH=#{dis}</if>
+			  <if test="dis==3">AND SYSDATE BETWEEN #{prev} AND #{next}+7</if>
+			   ) D
+		WHERE RNUM BETWEEN #{first} AND #{second}    
+	</select>
+
+	<select id="selectBoardList" resultMap="boardMap" parameterType="_int">
+		<include refid="boardTemplate" />
+		WHERE A.DISTINGUISH=#{dis}
+		AND ISDELETE IS NULL
+		ORDER BY A.POSTDATE DESC
+	</select>
+	
+		<select id="selectCommentsWriterList" resultMap="boardMap" parameterType="string">
+	<include refid="boardTemplate"/>
+	 WHERE A.BCODE IN (SELECT DISTINCT BCODE FROM COMMENTS WHERE WRITERID=#{writerId})
+	</select>
+
+	<select id="selectWriterList" resultMap="boardMap"
+		parameterType="string">
+		<include refid="boardTemplate" />
+		WHERE A.WRITERID = #{writerId} AND ISDELETE IS NULL
+	</select>
+	
+	<select id="selectNewTechList" resultMap="boardMap" parameterType="hashmap">
+		<include refid="boardTemplate"/>
+		WHERE A.DISTINGUISH=3
+		AND SYSDATE BETWEEN #{first} AND #{second}+7
+
+		AND ISDELETE IS NULL
+	</select>
+
+	<select id="selectSearchBoardList" resultMap="boardMap"
+		parameterType="hashmap">
+		<include refid="boardTemplate" />
+		WHERE (UPPER(A.TITLE) LIKE '%'||#{keyword1}||'%' OR UPPER(A.CONTENT)
+		LIKE '%'||#{keyword2}||'%') AND ISDELETE IS NULL
+	</select>
+	
+	<select id="selectSearchDisBoard" resultMap="boardMap" parameterType="hashmap">
+	<include refid="boardTemplate" />
+		WHERE (UPPER(A.TITLE) LIKE '%'||#{keyword1}||'%' OR UPPER(A.CONTENT)
+		LIKE '%'||#{keyword2}||'%') AND A.DISTINGUISH = #{dis} AND ISDELETE IS NULL
+	</select>
+
+	<select id="selectBoardOne" resultMap="boardMap" parameterType="_int">
+		<include refid="boardTemplate" />
+		WHERE A.BCODE=#{bcode}
+	</select>
+
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO BOARD VALUES
+		(
+		#{bcode},#{title},#{content},#{distinguish},
+		#{writerid},SYSDATE,'n','n'
+		)
+	</insert>
+
+	<select id="boardCode" resultType="java.lang.Integer">
+		SELECT BOARD_SEQ.NEXTVAL
+		FROM DUAL
+	</select>
+
+	<update id="updateBoard" parameterType="Board">
+		UPDATE BOARD
+		SET TITLE=#{title},CONTENT=#{content},POSTDATE=SYSDATE,
+		<if test="hasfile==null">HASFILE=NULL</if>
+		<if test="hasfile!=null">HASFILE=#{hasfile}</if>
+		
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<update id="updateAB" parameterType="_int">
+		UPDATE BOARD
+		SET HASFILE='y'
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<update id="deleteBoard" parameterType="_int">
+		UPDATE BOARD
+		SET ISDELETE='y'
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<update id="viewBoard" parameterType="BoardPoint">
+		UPDATE BOARDPOINT
+		SET VIEWNUM=#{viewnum}
+		WHERE BCODE=#{bcode}
+	</update>
+
+
+	<insert id="writeBoard">
+		INSERT INTO BOARD VALUES
+		(
+		${bcode}, #{title},#{content},#{distinguish},#{writerid},sysdate,null,null
+		)
+	</insert>
+
+	<update id="bestrecommendation" parameterType="_int">
+		UPDATE BOARDPOINT
+		SET BEST=BEST+1,CAL=CAL+5
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<update id="goodrecommendation" parameterType="_int">
+		UPDATE BOARDPOINT
+		SET GOOD=GOOD+1,CAL=CAL+3
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<update id="badrecommendation" parameterType="_int">
+		UPDATE BOARDPOINT
+		SET BAD=BAD+1,CAL=CAL-3
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<update id="worstrecommendation" parameterType="_int">
+		UPDATE BOARDPOINT
+		SET WORST=WORST+1,CAL=CAL-5
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<update id="bmedal" parameterType="_int">
+		UPDATE BOARDPOINT
+		SET MEDAL=MEDAL+1
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<insert id="breport" parameterType="hashmap">
+		INSERT INTO REPORTLIST
+		VALUES(#{bcode},#{reporter})
+	</insert>
+
+	<select id="isbreport" parameterType="hashmap" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM REPORTLIST
+		WHERE BCODE=#{bcode}
+		AND ID=#{reporter}
+	</select>
+
+	<update id="viewcount" parameterType="_int">
+		UPDATE BOARDPOINT
+		SET
+		VIEWNUM=VIEWNUM+1
+		WHERE BCODE=#{bcode}
+	</update>
+
+	<select id="boardName" parameterType="_int" resultType="java.lang.String">
+		SELECT
+		NAME
+		FROM BOARDCODE
+		WHERE DISCODE=#{dis}
+	</select>
+</mapper>

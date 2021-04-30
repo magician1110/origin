@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commentsMapper">
+
+ 	<resultMap id="commentsMap" type="Comments">
+ 			<id column="CCODE" property="ccode" />
+	 		<result column="CONTENT" property="content"/>
+	 		<result column="WRITERID" property="writerid"/>
+	 		<result column="POSTDATE" property="postdate"/>
+	 		<result column="LEV" property="lev"/>
+	 		<result column="UPPER" property="upper"/>
+	 		<result column="BCODE" property="bcode"/>
+	 		<result column="ISDELETE" property="isdelete"/>
+	 		<association property="point" javaType="CommentsPoint">
+	 			<id column="CCODE" property="ccode" />
+		 		<result column="GOOD" property="good"/>
+		 		<result column="BAD" property="bad"/>
+		 		<result column="CAL" property="cal"/>
+		 		<result column="MEDAL" property="medal"/>
+		 		<result column="REPORT" property="report"/>
+	 		</association>
+ 	</resultMap>
+ 	
+	<select id="selectComments" resultMap="commentsMap" parameterType="_int">		
+		SELECT A.CCODE, A.CONTENT, A.WRITERID, TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE, A.LEV, A.UPPER, A.BCODE, A.ISDELETE,B.*
+		FROM COMMENTS A
+		JOIN COMMENTSPOINT B
+		ON A.CCODE=B.CCODE
+		WHERE A.BCODE=#{bcode}
+		START WITH A.UPPER IS NULL
+		CONNECT BY PRIOR A.CCODE=A.UPPER
+	</select>
+	
+	<select id="selectCommentsOne" resultMap="commentsMap" parameterType="_int">
+		SELECT A.CCODE, A.CONTENT, A.WRITERID, TO_CHAR(A.POSTDATE,'RRRR-MM-DD HH24:MI:SS') POSTDATE, A.LEV, A.UPPER, A.BCODE, A.ISDELETE,B.*
+		FROM COMMENTS A
+		JOIN COMMENTSPOINT B
+		ON A.CCODE=B.CCODE
+		WHERE A.CCODE=#{ccode} 
+	</select>
+	
+	<insert id="insertComments" parameterType="Comments">
+		INSERT INTO COMMENTS
+		VALUES(#{ccode},#{content},#{writerid},SYSDATE,1,NULL,#{bcode},NULL)
+	</insert>
+	
+	<insert id="insertUComments" parameterType="Comments">
+		INSERT INTO COMMENTS
+		VALUES(#{ccode},#{content},#{writerid},SYSDATE,2,#{upper},#{bcode},NULL)
+	</insert>
+	
+	<update id="updateComments" parameterType="Comments">
+		UPDATE COMMENTS
+		SET CONTENT=#{content},POSTDATE=SYSDATE
+		WHERE CCODE=#{ccode}
+	</update>
+	
+	<update id="cgoodrecommendation" parameterType="_int">
+		UPDATE COMMENTSPOINT 
+		SET GOOD=GOOD+1,CAL=CAL+3
+		WHERE CCODE=#{ccode}		
+	</update>
+	
+	<update id="cbadrecommendation" parameterType="_int">
+		UPDATE COMMENTSPOINT 
+		SET	BAD=BAD+1,CAL=CAL-3
+		WHERE CCODE=#{ccode}		
+	</update>
+	
+	<update id="cmedal" parameterType="_int">
+		UPDATE COMMENTSPOINT 
+		SET	MEDAL=MEDAL+1
+		WHERE CCODE=#{ccode}		
+	</update>
+	
+	<insert id="creport" parameterType="hashmap">
+		INSERT INTO CREPORTLIST
+		VALUES(#{ccode},#{reporter})
+	</insert>
+	
+	<select id="iscreport" parameterType="hashmap" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM CREPORTLIST
+		WHERE CCODE=#{ccode}
+		AND ID=#{reporter}
+	</select>
+	
+	<select id="getCcode" resultType="java.lang.Integer">
+		SELECT COMMENTS_SEQ.NEXTVAL
+		FROM DUAL
+	</select>
+	
+	<update id="deleteComments" parameterType="_int">
+		UPDATE COMMENTS
+		SET CONTENT='삭제된 댓글입니다.', ISDELETE='y'
+		WHERE CCODE=#{ccode}
+	</update>
+	
+</mapper>

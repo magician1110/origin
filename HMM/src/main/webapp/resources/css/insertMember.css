@@ -1,0 +1,104 @@
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+
+#deeaee
+#618685
+#c94c4c
+*/
+
+/* Full-width input fields */
+.insert_body input[type=text], .insert_body input[type=password], .insert_body input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+
+.insert_body input[type=text]:focus, .insert_body input[type=password]:focus, .insert_body input[type=email]:focus {
+  border: 1px green solid;
+}
+
+/* Set a style for all buttons */
+.insert_body form button {
+    border-radius: 5px;
+    background-color: #002F2F;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.insert_body form button:hover{
+  color: gold;
+}
+
+/* Extra styles for the cancel button */
+.modal-footer .cancelbtn {
+    border-radius: 5px;
+    color: white;
+    width: auto;
+    padding: 10px 18px;
+    background-color: #c94c4c;
+    border: none;
+}
+
+form button:hover, .cancelbtn:hover {
+    color : gold;
+}
+
+select {
+  padding: 10px;
+  width: 100%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    /* z-index: 1; Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    padding-top: 10px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 2% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}

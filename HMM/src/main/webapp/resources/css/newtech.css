@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+/*
+#E6E2AF
+#A7A37E
+#EFECCA
+#046380
+#002F2F
+
+#deeaee
+#618685
+#c94c4c
+*/
+
+html body {
+    background-color: #deeaee;
+}
+
+.polls_heading {
+  font-family: 'Hanna', serif;
+  text-align: center;
+  background-color: #002F2F;
+  width: 100%;
+  padding: 20px;
+}
+
+.polls_heading h1 {
+  color: white;
+}
+
+.polls_heading h2 {
+  color: white;
+}
+
+#week{
+  font-size: 40px;
+}
+
+.polls_body {
+  font-family: 'Hanna', serif;
+  background-color: #deeaee;
+  text-align: center;
+  padding: 20px;
+}
+
+.polls_body button{
+  font-size: 24px;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  width: 500px;
+  height: 200px;
+  margin: 10px;
+  transition: transform 0.5s;
+}
+
+.polls_body #agree {
+  background-color: #618685;
+}
+
+.polls_body #disagree {
+  background-color: #c94c4c;
+}
+
+#polls_result_btn{
+  font-size: 20px;
+  width: 400px;
+  height: 100px;
+  background-color: skyblue;
+}
+
+#polls_result_btn:hover{
+  transform: scale(1.1);
+  color: gold;
+}
+
+.polls_body button:hover {
+  transform: scale(1.1);
+  color: gold;
+}
+
+.polls_between {
+  color: white;
+  background-color: #3e3e3e;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 200%;
+  line-height: 150px;
+  text-align: center;
+  font-size: 75px;
+  margin: 10px;
+}
+
+.polls_footer{
+  width: 100%;
+  background-color: #deeaee;
+}

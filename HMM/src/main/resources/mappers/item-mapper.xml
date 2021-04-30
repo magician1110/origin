@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="itemMapper">
+
+	<resultMap id="itemResultMap" type="Item"></resultMap>
+
+	<select id="selectItemList" resultMap="itemResultMap"
+		resultType="Item">
+		select A.ITEMCODE, A.NAME, A.USAGEDATE,B.NAME MOOD,
+		A.FILELINK,
+		A.PRICE
+		from ITEM A
+		JOIN ITEMMOOD B
+		USING (MOOD)
+	</select>
+
+	<select id="selectItemOne" resultType="Item" parameterType="_int">
+		select A.ITEMCODE, A.NAME, A.USAGEDATE,B.NAME MOOD, A.FILELINK,
+		A.PRICE
+		from ITEM A
+		JOIN ITEMMOOD B
+		USING (MOOD)
+		WHERE A.ITEMCODE=#{itemcode}
+	</select>
+
+	<select id="selectPurchasedItem" resultMap="itemResultMap"
+		resultType="Item">
+		SELECT A.*,B.PURCHASEDATE
+		FROM ITEM A
+		JOIN PURCHASEDITEM B
+		ON
+		A.ITEMCODE=B.ITEMCODE
+		WHERE B.MEMBERCODE=#{membercode}
+	</select>
+	
+	<select id="selectIsPurchaseItem" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM ITEM A
+		JOIN PURCHASEDITEM B
+		ON
+		A.ITEMCODE=B.ITEMCODE
+		WHERE B.MEMBERCODE=#{membercode} AND A.ITEMCODE=#{itemcode}
+	</select>
+
+	<insert id="insertOne">
+		insert into PURCHASEDITEM values(#{membercode},#{itemcode},SYSDATE)
+	</insert>
+	
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.kh.hmm.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.kh.hmm.board.model.vo.Board" alias="Board" />
+		<typeAlias type="com.kh.hmm.board.model.vo.BoardCode" alias="BoardCode" />
+		<typeAlias type="com.kh.hmm.board.model.vo.BoardPoint" alias="BoardPoint" />
+		
+		<typeAlias type="com.kh.hmm.board.model.vo.Comments" alias="Comments" />
+		<typeAlias type="com.kh.hmm.board.model.vo.CommentsPoint" alias="CommentsPoint" />
+		
+		<typeAlias type="com.kh.hmm.board.model.vo.Attachfile" alias="Attachfile" />
+		
+		<typeAlias type="com.kh.hmm.item.model.vo.Item" alias="Item" />
+		<typeAlias type="com.kh.hmm.item.model.vo.Purchaseditem" alias="Purchaseditem" />
+		
+		<typeAlias type="com.kh.hmm.newTech.model.vo.Conlist" alias="Conlist" />
+		<typeAlias type="com.kh.hmm.newTech.model.vo.Prolist" alias="Prolist" />
+		<typeAlias type="com.kh.hmm.newTech.model.vo.Weeksubject" alias="Weeksubject" />
+		
+		
+		<typeAlias type="com.kh.hmm.bw.model.vo.Service" alias="Service"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml" />
+		<mapper resource="mappers/board-mapper.xml" />
+		<mapper resource="mappers/comments-mapper.xml" />
+		<mapper resource="mappers/attachfile-mapper.xml" />
+		<mapper resource="mappers/item-mapper.xml" />
+		<mapper resource="mappers/weeksubject-mapper.xml" />
+		<mapper resource="mappers/service-mapper.xml"	/>
+	</mappers>
+</configuration>

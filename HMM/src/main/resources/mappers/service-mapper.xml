@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="serviceMapper">
+	<resultMap id="serviceMap" type="Service">
+		<result column="SERNAME" property="sername" />
+		<result column="SERADD" property="seradd" />
+		<result column="SERTITLE" property="sertitle"/>
+		<result column="SERCONTENT" property="sercontent" />
+		<result column="YNCHECK" property="yncheck"/>
+	</resultMap>
+
+	<insert id="serviceinsert" parameterType="Service">
+		INSERT INTO SERVICE
+		VALUES
+		(
+		#{sername},#{seradd},#{sertitle},#{sercontent},sysdate, default
+		)
+	</insert>
+	
+	<select id="serviceselectAll"  parameterType="map" resultMap="serviceMap">
+		select * 
+    	  from (select rownum rnum,A.*
+           from(select * 
+                 from service 
+                 order by sertitle desc)A
+             where ROWNUM &lt;= #{endNo} ) 
+        where rnum &gt;= #{startNo}
+	
+	</select>
+	
+	<select id="superSelectAll" resultMap="serviceMap">
+		select * from service 
+        order by sertitle desc
+	</select>
+	
+ 	<delete id="servicedelete" parameterType="string">
+ 		DELETE FROM SERVICE 
+		WHERE ROWID = (SELECT rid FROM (SELECT ROWNUM rn, ROWID rid FROM SERVICE) WHERE rn like to_number(#{s})+1)
+ 	</delete>
+ 	
+ 	<update id="servicecheck" parameterType="string">
+ 		UPDATE SERVICE SET YNCHECK = 'Y'
+ 		WHERE ROWID = (SELECT rid FROM (SELECT ROWNUM rn, ROWID rid FROM SERVICE) WHERE rn like to_number(#{valueArrTest})+1)
+ 	</update>
+ 	
+ 	<select id="totalRow" resultType="_int">
+        select count(*) from service
+	</select>
+	
+	 <select id="serviceCount" resultType="_int">
+ 		select count(*) from service where yncheck = 'Y'
+ 	</select> 
+ 	
+</mapper>

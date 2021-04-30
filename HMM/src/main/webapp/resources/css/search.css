@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+.search_idpw h2 {
+  font-family: 'Hanna', serif;
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 20px;
+  background-color: #002F2F;
+  color: white;
+  text-align: center;
+}
+
+.search_idpw h3 {
+  font-family: 'Hanna', serif;
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+v.search_idpw h4 {
+  font-family: 'Hanna', serif;
+  font-size: 16px;
+}
+
+.search_idpw_body{
+  font-family: 'Hanna', serif;
+  padding: 20px;
+}
+
+.search_idpw_body input[type=email], .search_idpw_body input[type=text] {
+    font-size: 14px;
+    font-family: 'Hanna', serif;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+
+.search_idpw_body input[type=email]:focus, .search_idpw_body input[type=text]:focus {
+  border: 1px green solid;
+}
+
+.search_idpw_body button {
+  font-family: 'Hanna', serif;
+    background-color: #002F2F;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .search_idpw_body button:hover {
+    opacity: 0.8;
+  }
+
+.search_idpw_body .cancelbtn {
+      background-color: red;
+      color: white;
+      width: auto;
+      padding: 10px 18px;
+      border: none;
+  }
+
+  .search_idpw_body .cancelbtn:hover {
+    opacity: 0.8;
+  }
