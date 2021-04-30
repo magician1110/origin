@@ -1,4 +1,4 @@
-﻿package com.kh.hmm.board.model.dao;
+package com.kh.hmm.board.model.dao;
 
 import java.sql.Date;
 import java.util.ArrayList;

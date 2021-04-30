@@ -9,8 +9,8 @@
 		destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
-		<property name="username" value="hmm" />
-		<property name="password" value="hmm" />
+		<property name="username" value="c##lbw" />
+		<property name="password" value="lbw" />
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">

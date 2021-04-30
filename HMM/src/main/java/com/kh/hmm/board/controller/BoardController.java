@@ -1,4 +1,4 @@
-﻿package com.kh.hmm.board.controller;
+package com.kh.hmm.board.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
