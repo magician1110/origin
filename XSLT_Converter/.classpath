@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="day191105/AstTra.java|day191105/" kind="src" path="src"/>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="src" path="Xml"/>
+	<classpathentry kind="src" path="Image"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_171"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-ant.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-dom-9.0.0.6j.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-dom-9.1.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-dom.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-jdom.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-s9api.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-sql.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-test.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-xom.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9-xqj.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9.jar"/>
+	<classpathentry kind="lib" path="lib/saxon9he.jar"/>
+	<classpathentry kind="lib" path="lib/icu4j-59_1.jar"/>
+	<classpathentry kind="lib" path="lib/javax.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

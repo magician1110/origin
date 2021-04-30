@@ -1,0 +1,74 @@
+﻿<regions>
+	<region type="KOR">
+		<code lang="ko_KR">Korean</code>
+	</region>
+	<region type="OPEN">
+		<code lang="sq_AL">Albanian (Albania)</code>
+		<code lang="bg_BG">Bulgarian (Bulgaria)</code>
+		<code lang="hr_HR">Croatian (Croatia)</code>
+		<code lang="cs_CZ">Czech (Czech Republic)</code>
+		<code lang="da_DK">Danish (Denmark)</code>
+		<code lang="nl_NL">Dutch (Netherlands)</code>
+		<code lang="en_GB">English (United Kingdom)</code>
+		<code lang="et_EE">Estonian (Estonia)</code>
+		<code lang="fi_FI">Finnish (Finland)</code>
+		<code lang="fr_FR">French (France)</code>
+		<code lang="de_DE">German (Germany)</code>
+		<code lang="el_GR">Greek (Greece)</code>
+		<code lang="hu_HU">Hungarian (Hungary)</code>
+		<code lang="it_IT">Italian (Italy)</code>
+		<code lang="lt_LT">Lithuanian (Lithuania)</code>
+		<code lang="lv_LV">Latvian (Latvia)</code>
+		<code lang="mk_MK">Macedonian (Macedonia)</code>
+		<code lang="nb_NO">Norwegian (Norway)</code>
+		<code lang="pl_PL">Polish (Poland)</code>
+		<code lang="pt_PT">Portuguese (Portugal)</code>
+		<code lang="ro_RO">Romanian (Romania)</code>
+		<code lang="sr_RS">Serbian (Serbia)</code>
+		<code lang="sk_SK">Slovak (Slovakia)</code>
+		<code lang="sl_SI">Slovenian (Slovenia)</code>
+		<code lang="es_ES">Spanish (Spain)</code>
+		<code lang="sv_SE">Swedish (Sweden)</code>
+	</region>
+	<region type="CIS">
+		<code lang="kk_KZ">Kazakh (Kazakhstan)</code>
+		<code lang="mn_MN">Mongolian (Mongolia)</code>
+		<code lang="ro_RO">Romanian (Romania)</code>
+		<code lang="ru_RU">Russian (Russia)</code>
+		<code lang="uk_UA">Ukrainian (Ukraine)</code>
+		<code lang="uz_UZ">Uzbek (Uzbekistan)</code>
+	</region>
+	<region type="LTN">
+		<code lang="en_CA">English (Canada)</code>
+		<code lang="en_US">English (United States)</code>
+		<code lang="fr_CA">French (Canada)</code>
+		<code lang="pt_BR">Portuguese (Brazil)</code>
+		<code lang="es_US">Spanish (United States)</code>
+	</region>
+	<region type="MEA">
+		<code lang="ar_AE">Arabic (United Arab Emirates)</code>
+		<code lang="fa_IR">Farsi (Iran)</code>
+		<code lang="iw_IL">Hebrew (Israel)</code>
+		<code lang="tr_TR">Turkish (Turkey)</code>
+		<code lang="ur_PK">Urdu (Islamic Republic of Pakistan)</code>
+		<code lang="fr_FR">French (France)</code>
+	</region>
+	<region type="SEA">
+		<code lang="in_ID">Indonesian (Indonesia)</code>
+		<code lang="km_KH">Khmer (Cambodia)</code>
+		<code lang="lo_LA">Lao (Lao P.D.R.)</code>
+		<code lang="my_ZG">Myanmar (Zawgyi)</code>
+		<code lang="th_TH">Thai (Thailand)</code>
+		<code lang="vi_VN">Vietnamese (VietNam)</code>
+		<code lang="zh_CN">Singapore Chinese (Singapore)</code>
+	</region>
+	<region type="CHN/OPEN">
+		<code lang="zh_HK">Chinese (Hong Kong)</code>
+		<code lang="zh_CN">Chinese (Simplified)</code>
+		<code lang="zh_TW">Chinese (Taiwan)</code>
+	</region>
+	<region type="SWA">
+		<code lang="bn_BD">Bengali (Bangladesh)</code>
+		<code lang="hi_IN">Hindi (India)</code>
+	</region>
+</regions>

@@ -1,0 +1,6 @@
+#Please do not delete this comment line.
+INCREMENT compare deltaxml 10.0 30-may-2020 uncounted \
+	VENDOR_STRING=cpus=2 HOSTID=INTERNET=10.10.11.6 \
+	ISSUER="DeltxXML Ltd" ISSUED=30-may-2019 START=21-may-2019 \
+	TS_OK SIGN="0068 3465 A343 4B43 F01D 9B30 8142 2D00 25BB 1059 \
+	1C6D 5F67 DA11 296F 51D3"

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Variables>
+   <model name="UN43TU7000FXZA">
+      <spec key="DTS00008">43</spec>
+      <spec key="DTS00700">42.5</spec>
+      <spec key="DTS00701">108</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">200</part>
+         <part name="H">200</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">963.9</part>
+         <part name="H">558.9</part>
+         <part name="D">59.6</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">963.9</part>
+         <part name="H">628.9</part>
+         <part name="D">200.5</part>
+      </spec>
+      <spec key="DTS00281">8.1</spec>
+      <spec key="DTS00282">8.3</spec>
+   </model>
+   <model name="UN43TU700DFXZA">
+      <spec key="DTS00008">43</spec>
+      <spec key="DTS00700">42.5</spec>
+      <spec key="DTS00701">108</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">200</part>
+         <part name="H">200</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">963.9</part>
+         <part name="H">558.9</part>
+         <part name="D">59.6</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">963.9</part>
+         <part name="H">628.9</part>
+         <part name="D">200.5</part>
+      </spec>
+      <spec key="DTS00281">8.1</spec>
+      <spec key="DTS00282">8.3</spec>
+   </model>
+   <model name="UN50TU7000FXZA">
+      <spec key="DTS00008">50</spec>
+      <spec key="DTS00700">49.5</spec>
+      <spec key="DTS00701">125</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">200</part>
+         <part name="H">200</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1116.8</part>
+         <part name="H">644.2</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1116.8</part>
+         <part name="H">713.6</part>
+         <part name="D">249.7</part>
+      </spec>
+      <spec key="DTS00281">11.4</spec>
+      <spec key="DTS00282">11.6</spec>
+   </model>
+   <model name="UN50TU700DFXZA">
+      <spec key="DTS00008">50</spec>
+      <spec key="DTS00700">49.5</spec>
+      <spec key="DTS00701">125</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">200</part>
+         <part name="H">200</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1116.8</part>
+         <part name="H">644.2</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1116.8</part>
+         <part name="H">713.6</part>
+         <part name="D">249.7</part>
+      </spec>
+      <spec key="DTS00281">11.4</spec>
+      <spec key="DTS00282">11.6</spec>
+   </model>
+   <model name="UN55TU7000FXZA">
+      <spec key="DTS00008">55</spec>
+      <spec key="DTS00700">54.6</spec>
+      <spec key="DTS00701">138</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">200</part>
+         <part name="H">200</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1230.5</part>
+         <part name="H">707.2</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1230.5</part>
+         <part name="H">778.3</part>
+         <part name="D">249.7</part>
+      </spec>
+      <spec key="DTS00281">13.9</spec>
+      <spec key="DTS00282">14.2</spec>
+   </model>
+   <model name="UN55TU700DFXZA">
+      <spec key="DTS00008">55</spec>
+      <spec key="DTS00700">54.6</spec>
+      <spec key="DTS00701">138</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">200</part>
+         <part name="H">200</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1230.5</part>
+         <part name="H">707.2</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1230.5</part>
+         <part name="H">778.3</part>
+         <part name="D">249.7</part>
+      </spec>
+      <spec key="DTS00281">13.9</spec>
+      <spec key="DTS00282">14.2</spec>
+   </model>
+   <model name="UN58TU7000FXZA">
+      <spec key="DTS00008">58</spec>
+      <spec key="DTS00700">57.5</spec>
+      <spec key="DTS00701">146</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">400</part>
+         <part name="H">300</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1291.0</part>
+         <part name="H">748.6</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1291.0</part>
+         <part name="H">819.4</part>
+         <part name="D">249.7</part>
+      </spec>
+      <spec key="DTS00281">15.2</spec>
+      <spec key="DTS00282">15.4</spec>
+   </model>
+   <model name="UN58TU700DFXZA">
+      <spec key="DTS00008">58</spec>
+      <spec key="DTS00700">57.5</spec>
+      <spec key="DTS00701">146</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">400</part>
+         <part name="H">300</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1291.0</part>
+         <part name="H">748.6</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1291.0</part>
+         <part name="H">819.4</part>
+         <part name="D">249.7</part>
+      </spec>
+      <spec key="DTS00281">15.2</spec>
+      <spec key="DTS00282">15.4</spec>
+   </model>
+   <model name="UN65TU7000FXZA">
+      <spec key="DTS00008">65</spec>
+      <spec key="DTS00700">64.5</spec>
+      <spec key="DTS00701">163</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">400</part>
+         <part name="H">300</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1449.4</part>
+         <part name="H">830.3</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1449.4</part>
+         <part name="H">905.2</part>
+         <part name="D">283.5</part>
+      </spec>
+      <spec key="DTS00281">20.6</spec>
+      <spec key="DTS00282">20.9</spec>
+   </model>
+   <model name="UN65TU700DFXZA">
+      <spec key="DTS00008">65</spec>
+      <spec key="DTS00700">64.5</spec>
+      <spec key="DTS00701">163</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">400</part>
+         <part name="H">300</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1449.4</part>
+         <part name="H">830.3</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1449.4</part>
+         <part name="H">905.2</part>
+         <part name="D">283.5</part>
+      </spec>
+      <spec key="DTS00281">20.6</spec>
+      <spec key="DTS00282">20.9</spec>
+   </model>
+   <model name="UN70TU7000FXZA">
+      <spec key="DTS00008">70</spec>
+      <spec key="DTS00700">69.5</spec>
+      <spec key="DTS00701">176</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">400</part>
+         <part name="H">300</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1572.4</part>
+         <part name="H">874.5</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1572.4</part>
+         <part name="H">959</part>
+         <part name="D">339.9</part>
+      </spec>
+      <spec key="DTS00281">24.2</spec>
+      <spec key="DTS00282">24.7</spec>
+   </model>
+   <model name="UN70TU700DFXZA">
+      <spec key="DTS00008">70</spec>
+      <spec key="DTS00700">69.5</spec>
+      <spec key="DTS00701">176</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">400</part>
+         <part name="H">300</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1572.4</part>
+         <part name="H">874.5</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1572.4</part>
+         <part name="H">959.0</part>
+         <part name="D">339.9</part>
+      </spec>
+      <spec key="DTS00281">24.2</spec>
+      <spec key="DTS00282">24.7</spec>
+   </model>
+   <model name="UN75TU7000FXZA">
+      <spec key="DTS00008">75</spec>
+      <spec key="DTS00700">74.5</spec>
+      <spec key="DTS00701">189</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">400</part>
+         <part name="H">400</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1673.2</part>
+         <part name="H">958.2</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1673.2</part>
+         <part name="H">1043.0</part>
+         <part name="D">339.9</part>
+      </spec>
+      <spec key="DTS00281">30.4</spec>
+      <spec key="DTS00282">30.8</spec>
+   </model>
+   <model name="UN75TU700DFXZA">
+      <spec key="DTS00008">75</spec>
+      <spec key="DTS00700">74.5</spec>
+      <spec key="DTS00701">189</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">400</part>
+         <part name="H">400</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1673.2</part>
+         <part name="H">958.2</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1673.2</part>
+         <part name="H">1043.0</part>
+         <part name="D">339.9</part>
+      </spec>
+      <spec key="DTS00281">30.4</spec>
+      <spec key="DTS00282">30.8</spec>
+   </model>
+   <model name="UN82TU700DFXZA">
+      <spec key="DTS00008">82</spec>
+      <spec key="DTS00700">81.5</spec>
+      <spec key="DTS00701">207</spec>
+      <spec key="DTS00009">3,840 x 2,160</spec>
+      <spec key="DTS00043">20W</spec>
+      <spec key="DTS00067">M8</spec>
+      <spec key="DTS00555">20-22</spec>
+      <spec key="DTS00556">
+         <part name="W">600</part>
+         <part name="H">400</part>
+      </spec>
+      <spec key="DTS00277">
+         <part name="W">1829.9</part>
+         <part name="H">1045</part>
+         <part name="D">59.9</part>
+      </spec>
+      <spec key="DTS00278">
+         <part name="W">1829.9</part>
+         <part name="H">1148.2</part>
+         <part name="D">393.7</part>
+      </spec>
+      <spec key="DTS00281">37.7</spec>
+      <spec key="DTS00282">38.9</spec>
+   </model>
+</Variables>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="main" name="Delta_ExtractorForMC" basedir=".">
+    <description>
+    	Delta_ExtractorForMC 
+    </description>
+	
+	<property name="src" location="src"></property>
+	<property name="build" location="build"></property>
+	<property name="dist" location="dist"></property>
+	<property name="backup" location="backup"></property>
+	
+    <target name="init">
+    	<mkdir dir="${dist}"/>  <!-- dist폴더를 만듬 -->
+    	<mkdir dir="${build}"/> <!-- build폴더를 만듬 -->
+    	<tstamp>
+    		<format property="DSTAMP" pattern="yyyyMMdd"/>
+    		<format property="TSTAMP" pattern="HHmm"/>
+    	</tstamp>
+    	<echo message="target ==== init "></echo>
+    </target>
+	
+	<target name="backup" depends="init">		
+		<mkdir dir="${backup}/${DSTAMP}"/>
+		<copy todir="${backup}/${DSTAMP}">
+			<fileset dir="${src}" />
+		</copy>
+		<echo message="target ==== backup"></echo>
+	</target>
+	
+    <target name="compile" depends="backup" description="compile the source">
+        <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
+    	<java classpath="./bin" classname="ast.Main" />
+    </target>
+	
+	<target name="dist" depends="compile" description="generate the description">
+		<mkdir dir="${dist}/lib"/>
+		<jar jarfile="${dist}/lib/main_${DSTAMP}.jar" basedir="${build}"></jar>
+	</target>
+	
+	<target name="clean" description="clean up"> <!-- 실제 사용 중이 아님-->
+		<delete dir="${build}"></delete>
+		<delete dir="${dist}"></delete>
+	</target>
+	
+    <target name="main" >
+         <wsgen/>
+    </target>
+
+</project>

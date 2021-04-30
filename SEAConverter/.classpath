@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/openjdk-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="img"/>
+	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/icu4j-59_1.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-ant.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-dom.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-dom-9.0.0.6j.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-dom-9.1.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9ee.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9ee-test.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9he.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-jdom.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-s9api.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-sql.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-test.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-xom.jar"/>
+	<classpathentry kind="lib" path="C:/Saxonica/lib/saxon9-xqj.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

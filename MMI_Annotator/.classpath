@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="img"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/pdfboxLib/pdfbox-2.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/pdfboxLib/pdfbox-app-2.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/pdfboxLib/pdfbox-debugger-2.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/pdfboxLib/pdfbox-tools-2.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/pdfboxLib/preflight-2.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/pdfboxLib/xmpbox-2.0.17.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

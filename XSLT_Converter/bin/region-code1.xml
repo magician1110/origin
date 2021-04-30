@@ -1,0 +1,24 @@
+<regions>
+	<region type="ASIA">
+		<code>Korean</code>
+		<code>Chinese</code>
+	</region>
+	<region type="CAN">
+		<code>English (CAN)</code>
+		<code>French (CAN)</code>
+	</region>
+	<region type="EU">
+		<code>Arabic</code>
+		<code>Danish</code>
+		<code>Dutch</code>
+		<code>English</code>
+		<code>English(UK)</code>
+		<code>French</code>
+		<code>German</code>
+		<code>Italian</code>
+		<code>Norwegian</code>
+		<code>Portuguese</code>
+		<code>Spanish</code>
+		<code>Swedish</code>
+	</region>
+</regions>

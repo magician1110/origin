@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="xslt"/>
+	<classpathentry kind="src" path="img"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/cocoa-macosx-x86.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/cocoa-macosx-x86_64.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/command-10.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/deltaxml-10.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/deltaxml-gui-10.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/deltaxml-rest-10.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/deltaxml-rest-client-10.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/EccpressoAll.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/flexlm.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/gtk-linux-x86.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/gtk-linux-x86_64.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/icu4j.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/puremvc-java-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/resolver.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/saxon9pe.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/win32-win32-x86.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/win32-win32-x86_64.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Delta-XML/xml-apis.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Saxonica-lib/icu4j-59_1.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Saxonica-lib/saxon9ee.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Saxonica-lib/saxon9ee-test.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Saxonica-lib/saxon9pe.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Saxonica-lib/saxon9pe-test.jar"/>
+	<classpathentry kind="lib" path="C:/라이브러리모음집/Saxonica-lib/saxon9-sql.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
