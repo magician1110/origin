@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context>
+<Resource name="jdbc/myoracle" auth="Container" type="javax.sql.DataSource"
+						driverClassName="org.mariadb.jdbc.Driver" url="jdbc:mariadb://localhost:3306/protean"
+						username="root" password="!!fkdlvm12" maxActive="20" maxIdle="20"
+						maxWait="-1" />
+</context>

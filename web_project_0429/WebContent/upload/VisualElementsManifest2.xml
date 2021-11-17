@@ -1,0 +1,11 @@
+<Application>
+  <VisualElements
+      DisplayName='Chrome'
+      Logo='42.0.2311.135\VisualElements\Logo.png'
+      SmallLogo='42.0.2311.135\VisualElements\SmallLogo.png'
+      ForegroundText='light'
+      BackgroundColor='#323232'>
+    <DefaultTile ShowName='allLogos'/>
+    <SplashScreen Image='42.0.2311.135\VisualElements\splash-620x300.png'/>
+  </VisualElements>
+</Application>
