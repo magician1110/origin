@@ -53,8 +53,14 @@
         <xsl:variable name="cur" select="." />
 
         <xsl:choose>
+            <xsl:when test="parent::*[matches(@class, 'MsoTableGridLight')]">
+                <xsl:copy>
+                    <xsl:apply-templates select="@*, node()" />
+                </xsl:copy>
+            </xsl:when>
+            
             <xsl:when test="count(parent::*/tr) = 1 and 
-                        count(td[not(matches(., '^&#xfeff;$'))]) = 1">
+                            count(td[not(matches(., '^&#xfeff;$'))]) = 1">
                 <xsl:variable name="cur1" select="." />
                 <xsl:apply-templates select="$cur1/td[not(matches(., '^&#xfeff;$'))]/node()" />
             </xsl:when>

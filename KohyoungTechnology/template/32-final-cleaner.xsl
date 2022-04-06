@@ -11,11 +11,6 @@
     <xsl:param name="outputPath" />
     <xsl:variable name="outputPathFinal" select="replace($outputPath, '\\', '/')" />
     
-    <!--<xsl:variable name="lang" select="root/body/@lang" />
-    <xsl:variable name="langCode" select="document(concat(ast:getPath(base-uri(.), '/'), '/codes.xml'))/codes/option" />
-    <xsl:variable name="langVal" select="$langCode[$lang=@lang]/@lang" />
-    
-    <xsl:variable name="Allparamater" select="concat(ast:getPath(base-uri(document('')), '/'), '/Allparamater.xml')" />-->
     
     <xsl:template match="@* | node()">
         <xsl:copy>
@@ -35,13 +30,6 @@
         </xsl:variable>
 
         <xsl:apply-templates select="$str0/*" />
-        
-        <!--<xsl:result-document href="{$Allparamater}">
-            <xsl:variable name="outputPath1" select="concat('file:////', $outputPath, '/output/', $langVal)"/>
-            <Root>
-                <outputPath src="{$outputPath1}" />
-            </Root>
-        </xsl:result-document>-->
     </xsl:template>
 
     <xsl:template match="ol">
@@ -114,6 +102,13 @@
             </xsl:for-each>
         </xsl:copy>
     </xsl:template>
+    
+    <xsl:template match="td">
+        <xsl:copy>
+            <xsl:apply-templates select="@* except @width" />
+            <xsl:apply-templates select="node()" />
+        </xsl:copy>
+    </xsl:template>
 
     <xsl:template match="img">
         <xsl:choose>
@@ -125,7 +120,6 @@
                     </xsl:copy>
                 </div>
             </xsl:when>
-            
             
             <xsl:otherwise>
                 <xsl:copy>
@@ -192,6 +186,10 @@
         </xsl:choose>
         </xsl:attribute>
     </xsl:template>
+    
+    <xsl:template match="@widthFix">
+        <xsl:attribute name="width" select="." />
+    </xsl:template>
 
     <xsl:template match="chapter[matches(@browerTitle, 'CoverInfo')]">
         <xsl:copy>
@@ -201,8 +199,17 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="@*[not(matches(name(), '(outFolderName|class|id|src|browerTitle|DesKey|href|filename|colspan|rowspan|start|lang|outputPath|sourcename)'))]" />
-
+    <xsl:template match="@*[not(matches(name(), '(outFolderName|class|id|src|browerTitle|DesKey|href|filename|colspan|rowspan|start|lang|outputPath|sourcename|valign|style)'))]">
+        <xsl:choose>
+            <xsl:when test="matches(name(), 'border-top')">
+                <xsl:attribute name="border-top" select="." />
+            </xsl:when>
+            <xsl:otherwise>
+                
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
 
     <xsl:function name="ast:getPath">
         <xsl:param name="str" />

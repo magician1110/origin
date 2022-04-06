@@ -1,0 +1,371 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+}
+
+#result {
+    margin: 150px 15px 0 15px;
+}
+#result-multi {
+    margin: 110px 15px 0 260px;
+}
+
+.result-multi th {
+    text-align: left;
+}
+
+.result-multi td p {
+    font-weight: normal;
+    line-height: 160%;
+}
+
+.create {
+    margin-left: 15px;
+    font-weight: normal;
+    font-size: 0.7em;
+    background-color: #aaa;
+    border-radius: 5%;
+    padding: 5px 5px;
+}
+
+p.rtl .create {
+    margin-left: 0px;
+    margin-right: 15px;
+}
+
+.indexmain {
+    margin: 10% 10%;
+}
+
+.pic {
+    background: url("pic.png");
+    background-size: auto 22px;
+    width: 16px;
+    height: 22px;
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    margin-left: 3px;
+    margin-right: 3px;
+    border: 1px solid #aaa;
+}
+
+.indexmain h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 3.5em;
+}
+.indexmain p {
+    text-align: center;
+}
+
+.multi-searchForm .input_text {
+    position: absolute;
+    top: 0px;
+    left: 250px;
+    width: 90vw;
+}
+
+.indexmain form #searchString, .searchForm #searchString, .input_text #searchString {
+    height:30px;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.indexmain form select, .searchForm select {
+    height: 30px;
+}
+
+.indexmain form > div.condition {
+    width: 17%;
+    float: left;
+}
+
+.indexmain form > .condition > div.part{
+    text-align: left;
+}
+
+.indexmain form > .condition > div.part > select#part {
+    width: 17em;
+    height: 38px;
+    margin-bottom: 8px;
+}
+
+.indexmain form > .input_text > #searchString {
+    width: 74%;
+}
+
+div.part > #part {
+    width: 17em;
+}
+
+#part select {
+    border-radius: 5px;
+}
+
+div.select {
+    font-size: 0.8em;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.indexmain form > div.input_text {
+    float: left;
+    position: relative;
+    width: 80%;
+    left: 40px;
+}
+
+img {
+    display: inline;
+    vertical-align: middle;
+}
+
+h1 {
+    margin-top: 30px;
+    margin-bottom: 3px;
+}
+
+p.rtl > span.stag::after {
+    content: "\200F";
+}
+
+p.rtl > span.stag::before {
+    content: "\200E";
+}
+
+span.ftag {
+    color: purple;
+}
+
+table {
+    /* background-color: #DDD; */
+    border-collapse: collapse;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+table tr td {
+    border: 1px solid black;
+    padding: 10px 10px 10px 10px;
+}
+
+table tr td.multi {
+    line-height: 37%;
+}
+
+th { 
+    background-color: #eee;
+    padding: 10px 10px 10px 10px;
+}
+
+.c3-1 { width: 45%;}
+.c3-2 { width: 45%;}
+.c3-3 { width: 10%;}
+
+tr:hover {
+    background-color: burlywood;
+}
+
+td {
+    /* cursor: pointer; */
+}
+
+/* modify */
+.header {
+    display: block;
+    position: fixed;
+    width:100%;
+    height: 85px;
+    top: 0px;
+    z-index: 555;
+    background-color: #eee;;
+}
+.contents {
+    position: absolute;
+    top: 85px;
+}
+/* modify */
+.searchForm {
+    padding: 40px 0 20px 15px;
+    width: 100%;
+    position: fixed;
+    background-color: #fff;
+    display: block;
+    top: 45px;
+}
+
+.multi-searchForm {
+    top: 52px;
+    left: 10px;
+    position: absolute;
+}
+
+.multi-searchForm .part #part {
+    height: 37px;
+    margin-bottom: 10px;
+}
+
+.multi-searchForm .multiselect {
+    height: 81vh;
+}
+
+.multi-searchForm + #wait-container {
+    position: relative;
+    left: 250px;
+    width: 87vw
+}
+
+input[type='submit'] {
+    height: 35px;
+}
+
+.highlight {
+    background-color: aqua;
+}
+
+.info {
+    font-size: .5em;
+}
+
+.view {
+    padding-top: 10px;
+    padding-left: 15px;
+    background-color: #C8EFD4;
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 35px;
+    top: 0px;
+    z-index: 520;
+}
+
+.gototop1, .gototophome {
+    display: inline-block;
+    font-family: bold;
+    color: #fff;
+    margin-left: 15px;
+    background-color: darkcyan;
+    padding:3px;
+}
+
+.gototophome a, .gototophome a:hover, .gototophome a:active, .gototophome a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.help {
+    display: inline;
+}
+
+.gototop2 {
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+    font-family: bold;
+    color: #ffffff;
+    margin-left: 15px;
+    background-color: black;
+    padding: 5px;
+}
+
+.uptodate {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.selectable {
+    -webkit-animation-name: animation;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    
+    animation-name: animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes animation {
+    0%     {background-color:darksalmon;color:dodgerblue ;}
+    50.0%  {background-color:#ff6666;}
+    100.0%  {background-color:burlywood;color:black;}
+}
+
+@keyframes animation {
+    0%     {background-color:darksalmon;color:dodgerblue; }
+    50.0%  {background-color:#ff6666;}
+    100.0%  {background-color:burlywood;color:black;}
+}
+
+#update {
+    text-align: left;
+}
+
+#wait-container {
+    margin-top: 150px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.2em;
+}
+
+.multiselect {
+    width:14em;
+    height:15em;
+    border:solid 1px #c0c0c0;
+    overflow:auto;
+    text-align: left;
+}
+
+.multiselect label {
+    display:block;
+}
+ 
+.multiselect-on {
+    color:#ffffff;
+    background-color:#000099;
+}
+
+characterstyle[aid\:cstyle~="No-trans"]::before {
+    content: "<characterstyle name='No-trans'>";
+    font-family: monospace;
+    color: #8389E0;
+}
+
+characterstyle[aid\:cstyle~="No-trans_Red"]::before {
+    content: "<languagevariable name='No-trans_Red'>";
+    font-family: monospace;
+    color: #8389E0;
+}
+
+characterstyle[aid\:cstyle~="Iword"]::before {
+    content: "<characterstyle name='Iword'>";
+    font-family: monospace;
+    color: #8389E0;
+}
+
+characterstyle[aid\:cstyle]::after {
+    content: "</characterstyle>";
+    font-family: monospace;
+    color: #8389E0;
+}
+
+languagevariable::before {
+    content: "<languagevariable>";
+    font-family: monospace;
+    color: #8389E0;
+}
+
+languagevariable.hidden::before {
+    display: none;
+}
+
+languagevariable::after {
+    content: "</languagevariable>";
+    font-family: monospace;
+    color: #8389E0;
+}
+
+languagevariable.hidden::after {
+    display: none;
+}

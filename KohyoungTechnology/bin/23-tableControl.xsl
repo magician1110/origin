@@ -48,8 +48,9 @@
 
 
     <xsl:template match="table">
+        <xsl:variable name="cur" select="."/>
         <xsl:variable name="cntTd" select="count(tr[matches(@class, 'heading')]/td)" />
-
+        
         <xsl:variable name="cntTdCols">
             <xsl:variable name="Cols1">
                 <xsl:for-each select="tr[matches(@class, 'heading')]/td[@*[matches(name(), 'colspan')]]">
@@ -82,15 +83,74 @@
             </xsl:choose>
         </xsl:variable>
         
+        <xsl:variable name="bufferTD">
+            <xsl:for-each select="tr[matches(@class, 'heading')]/td">
+                <xsl:variable name="cur" select="." />
+                <xsl:choose>
+                    <xsl:when test="$cur[@*[matches(name(), 'colspan')]]">
+                        <xsl:variable name="cols" select="xs:integer(@*[matches(name(), 'colspan')])" />
+                        <xsl:variable name="colsCur" select="$cur[@*[matches(name(), 'colspan')]]" />
+                        
+                        <xsl:for-each select="1 to $cols">
+                            <xsl:element name="{name($cur)}">
+                                <xsl:apply-templates select="$cur/@*" />
+                                <xsl:if test="$colsCur[@*[matches(name(), 'width')]]">
+                                    <xsl:variable name="widthVal" select="$colsCur/@*[matches(name(), 'width')]"/>
+                                    <xsl:variable name="widthInt" select="xs:integer(replace($widthVal, '(\d+)(.*)', '$1'))" />
+                                    <xsl:attribute name="width">
+                                        <xsl:value-of select="concat($widthInt div $cols, '%')"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                            </xsl:element>
+                        </xsl:for-each>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:element name="{name($cur)}">
+                            <xsl:apply-templates select="@*" />
+                        </xsl:element>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:for-each>
+        </xsl:variable>
+        
         <xsl:copy>
             <xsl:apply-templates select="@*" />
-            <colgroup>
-                <xsl:for-each select="1 to $totalCnt">
-                    <xsl:variable name="idx" select="." />
-                    <col class="{concat('c', $totalCnt, '-col', $idx)}" />
-                </xsl:for-each>
-            </colgroup>
-
+            <xsl:if test="$totalCnt &gt; 0">
+                <colgroup>
+                    <xsl:for-each select="1 to $totalCnt">
+                        <xsl:variable name="idx" select="." />
+                        <xsl:element name="col">
+                            <xsl:attribute name="class">
+                                <xsl:value-of select="concat('c', $totalCnt, '-col', $idx)"/>
+                            </xsl:attribute>
+                            <xsl:attribute name="style">
+                                <xsl:variable name="width" select="$bufferTD/td[$idx]/@width"/>
+                                <xsl:value-of select="concat('width:', $width)"/>
+                            </xsl:attribute>
+                        </xsl:element>
+                    </xsl:for-each>
+                </colgroup>
+            </xsl:if>
+            
+            <xsl:if test="$totalCnt = 0 and 
+                          count($cur/tr[1]/td) &gt;= 2">
+                <colgroup>
+                    <xsl:for-each select="1 to count($cur/tr[1]/td)">
+                        <xsl:variable name="idx" select="." />
+                        <xsl:element name="col">
+                            <xsl:attribute name="class">
+                                <xsl:value-of select="concat('c', $totalCnt, '-col', $idx)"/>
+                            </xsl:attribute>
+                            <xsl:attribute name="style">
+                                <xsl:variable name="width" select="$cur/tr[1]/td[$idx]/@width"/>
+                                <xsl:value-of select="concat('width:', $width)"/>
+                                
+                            </xsl:attribute>
+                        </xsl:element>
+                    </xsl:for-each>
+                </colgroup>
+            </xsl:if>
+            
             <xsl:for-each-group select="node()" group-adjacent="boolean(self::tr[matches(@class, 'theading')])">
                 <xsl:choose>
                     <xsl:when test="current-grouping-key()">

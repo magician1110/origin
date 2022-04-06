@@ -1,0 +1,219 @@
+2021-04-19 14:58:50 INFO  Main:591 - Processing starts.
+2021-04-19 14:59:04 INFO  Main:773 - Processing Succes.
+[F:\Project\Kohyoung\test\ReviewStation_UserManual_Rev1.1_ENG.docx]
+2021-09-01 16:55:19 INFO  Main:881 - 
+java.lang.IllegalArgumentException: setSelectedIndex: 3 out of bounds
+	at javax.swing.JComboBox.setSelectedIndex(JComboBox.java:620)
+	at com.Kohyoung.app.Main.initComponents(Main.java:331)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:878)
+2021-09-01 17:24:33 INFO  Main:601 - Processing starts.
+2021-09-01 17:25:20 INFO  Main:784 - Processing Succes.
+[F:\Project\Kohyoung\test\KSMART2.1.3_UserManual_JPN.docx, F:\Project\Kohyoung\test\KSMART2.1.3_UserManual_KOR.docx]
+2021-09-01 17:26:17 INFO  Main:784 - Processing Succes.
+[F:\Project\Kohyoung\test\KSMART2.1.3_UserManual_JPN.docx, F:\Project\Kohyoung\test\KSMART2.1.3_UserManual_KOR.docx]
+2021-09-16 15:25:33 INFO  Main:896 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:314)
+	at com.Kohyoung.app.Main.<init>(Main.java:84)
+	at com.Kohyoung.app.Main.main(Main.java:893)
+2021-09-16 15:26:17 INFO  Main:898 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:316)
+	at com.Kohyoung.app.Main.<init>(Main.java:84)
+	at com.Kohyoung.app.Main.main(Main.java:895)
+2021-09-16 15:27:13 INFO  Main:899 - 
+java.lang.IllegalArgumentException: setSelectedIndex: 0 out of bounds
+	at javax.swing.JComboBox.setSelectedIndex(JComboBox.java:620)
+	at com.Kohyoung.app.Main.initComponents(Main.java:338)
+	at com.Kohyoung.app.Main.<init>(Main.java:84)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-09-16 15:28:20 INFO  Main:899 - 
+java.lang.IllegalArgumentException: setSelectedIndex: 0 out of bounds
+	at javax.swing.JComboBox.setSelectedIndex(JComboBox.java:620)
+	at com.Kohyoung.app.Main.initComponents(Main.java:338)
+	at com.Kohyoung.app.Main.<init>(Main.java:84)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-09-16 15:30:18 INFO  Main:899 - 
+java.lang.IllegalArgumentException: setSelectedIndex: 0 out of bounds
+	at javax.swing.JComboBox.setSelectedIndex(JComboBox.java:620)
+	at com.Kohyoung.app.Main.initComponents(Main.java:338)
+	at com.Kohyoung.app.Main.<init>(Main.java:84)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-09-16 15:31:19 INFO  Main:899 - 
+java.lang.IllegalArgumentException: setSelectedIndex: 0 out of bounds
+	at javax.swing.JComboBox.setSelectedIndex(JComboBox.java:620)
+	at com.Kohyoung.app.Main.initComponents(Main.java:338)
+	at com.Kohyoung.app.Main.<init>(Main.java:84)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-09-16 15:50:17 INFO  Main:896 - 
+java.lang.ArrayStoreException
+	at java.lang.System.arraycopy(Native Method)
+	at java.util.ArrayList.toArray(ArrayList.java:412)
+	at com.Kohyoung.app.Main.initComponents(Main.java:316)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:893)
+2021-09-16 15:53:48 INFO  Main:899 - 
+java.lang.ArrayStoreException
+	at java.lang.System.arraycopy(Native Method)
+	at java.util.ArrayList.toArray(ArrayList.java:412)
+	at com.Kohyoung.app.Main.initComponents(Main.java:319)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-09-16 17:03:18 INFO  Main:907 - 
+java.lang.ClassCastException: java.util.ArrayList cannot be cast to java.io.File
+	at com.Kohyoung.app.Main.initComponents(Main.java:315)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:904)
+2021-09-16 17:12:52 INFO  Main:912 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:350)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:909)
+2021-09-16 17:13:36 INFO  Main:912 - 
+java.lang.ArrayIndexOutOfBoundsException: 1
+	at com.Kohyoung.app.Main.initComponents(Main.java:325)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:909)
+2021-09-16 17:18:57 INFO  Main:912 - 
+java.lang.ClassCastException: java.util.ArrayList$ListItr cannot be cast to javax.swing.ComboBoxModel
+	at com.Kohyoung.app.Main.initComponents(Main.java:325)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:909)
+2021-09-16 17:29:50 INFO  Main:912 - 
+java.lang.ClassCastException: java.io.File cannot be cast to javax.swing.ComboBoxModel
+	at com.Kohyoung.app.Main.initComponents(Main.java:325)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:909)
+2021-09-16 18:31:53 INFO  Main:912 - 
+java.lang.ArrayIndexOutOfBoundsException: 1
+	at com.Kohyoung.app.Main.initComponents(Main.java:325)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:909)
+2021-12-08 14:36:41 INFO  Main:899 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:338)
+	at com.Kohyoung.app.Main.<init>(Main.java:82)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-12-08 14:36:50 INFO  Main:899 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:338)
+	at com.Kohyoung.app.Main.<init>(Main.java:82)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-12-08 16:25:59 INFO  Main:899 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:338)
+	at com.Kohyoung.app.Main.<init>(Main.java:82)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-12-10 10:41:21 INFO  Main:899 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:338)
+	at com.Kohyoung.app.Main.<init>(Main.java:82)
+	at com.Kohyoung.app.Main.main(Main.java:896)
+2021-12-15 12:10:46 INFO  Main:901 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:340)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:898)
+2021-12-15 12:21:08 INFO  Main:901 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:340)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:898)
+2022-01-03 12:05:05 INFO  Main:901 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:340)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:898)
+2022-01-19 09:14:20 INFO  Main:901 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:340)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:898)
+2022-03-22 08:35:41 INFO  Main:901 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:340)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:898)
+2022-03-22 09:43:43 INFO  Main:929 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:358)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:926)
+2022-03-22 09:45:11 INFO  Main:929 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:358)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:926)
+2022-03-22 09:47:29 INFO  Main:929 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:358)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:926)
+2022-03-22 09:49:19 INFO  Main:929 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:358)
+	at com.Kohyoung.app.Main.<init>(Main.java:83)
+	at com.Kohyoung.app.Main.main(Main.java:926)
+2022-03-29 09:41:22 INFO  Main:1076 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:362)
+	at com.Kohyoung.app.Main.<init>(Main.java:89)
+	at com.Kohyoung.app.Main.main(Main.java:1073)
+2022-03-29 09:41:38 INFO  Main:1076 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:362)
+	at com.Kohyoung.app.Main.<init>(Main.java:89)
+	at com.Kohyoung.app.Main.main(Main.java:1073)
+2022-03-29 09:42:06 INFO  Main:1076 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:362)
+	at com.Kohyoung.app.Main.<init>(Main.java:89)
+	at com.Kohyoung.app.Main.main(Main.java:1073)
+2022-03-29 09:42:35 INFO  Main:1076 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Main.initComponents(Main.java:362)
+	at com.Kohyoung.app.Main.<init>(Main.java:89)
+	at com.Kohyoung.app.Main.main(Main.java:1073)
+2022-03-29 14:36:01 ERROR Main:626 - 
+java.lang.NullPointerException
+	at com.Kohyoung.app.Varietyfunction.templateMultiCopy(Varietyfunction.java:454)
+	at com.Kohyoung.app.Main.jButton_folderSelectBtnActionPerformed(Main.java:620)
+	at com.Kohyoung.app.Main.access$21(Main.java:547)
+	at com.Kohyoung.app.Main$4.actionPerformed(Main.java:220)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6539)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6304)
+	at java.awt.Container.processEvent(Container.java:2239)
+	at java.awt.Component.dispatchEventImpl(Component.java:4889)
+	at java.awt.Container.dispatchEventImpl(Container.java:2297)
+	at java.awt.Component.dispatchEvent(Component.java:4711)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4904)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4535)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4476)
+	at java.awt.Container.dispatchEventImpl(Container.java:2283)
+	at java.awt.Window.dispatchEventImpl(Window.java:2746)
+	at java.awt.Component.dispatchEvent(Component.java:4711)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:760)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:84)
+	at java.awt.EventQueue$4.run(EventQueue.java:733)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:730)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)

@@ -2,22 +2,35 @@ package com.Kohyoung.app;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
+import javax.lang.model.util.ElementKindVisitor8;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,6 +43,10 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -47,9 +64,18 @@ public class Varietyfunction {
 	private static ArrayList<String> arrHTMFilepath = new ArrayList<String>();
 	private static ArrayList<String> arrTempFilepath = new ArrayList<String>();
 	private static ArrayList<String> test = new ArrayList<String>();
-	private static ArrayList<String> arrLanguageFolderName = new ArrayList<String>();
-	private static int arrLanguageFolderCount;
+	private static ArrayList<String> arrLanguageFolderName = new ArrayList<String>();	
+	private static HashSet<String> multiDocLangDupleRemoveHashList = new HashSet<String>();	
+	private static ArrayList<String> arrMultiLang = new ArrayList<String>(); 
+	private static HashMap<String, String> langK_textV = new HashMap<>();
 	
+	private static JDialog dialog = new JDialog();
+	private static String codesLanValue;
+	private static String lang_Hash_temp;	
+	private static String text_Hash_temp;
+	private static int arrLanguageFolderCount;
+
+
 	public static void domParser() throws ParserConfigurationException, SAXException, IOException {
 		File inputFile = new File("language\\codes.xml");
 		if(!inputFile.exists()) {
@@ -66,10 +92,13 @@ public class Varietyfunction {
 			for(int i = 0; i < nList.getLength(); i++) {
 				Node nNode = nList.item(i);			
 				getArrTextList().add(nNode.getTextContent());
-	
+				
 				if(nNode.getNodeType() == Node.ELEMENT_NODE) {				
 					Element eElement = (Element) nNode;							
-					getArrTextList2().add(eElement.getAttribute("lang"));								
+					getArrTextList2().add(eElement.getAttribute("lang"));	
+					
+					langK_textV.put(eElement.getAttribute("lang"), nNode.getTextContent());
+				
 				}
 			}
 			
@@ -86,10 +115,38 @@ public class Varietyfunction {
 	        transformer.transform(source, result);
 		} catch (Exception e) {
 			e.printStackTrace();
+			Logger.getLogger(Main.class.getName()).log(Level.ERROR, null, e);
 		}
 		
 	}
 	
+
+	public static void domParserReadValue(String path){
+		File inputFile = new File(path);
+		if(!inputFile.exists()) {
+			JOptionPane.showMessageDialog(null, "language file does not exist.", "Error", JOptionPane.ERROR_MESSAGE);  			
+		}
+		
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+			Document document = documentBuilder.parse(inputFile);					
+						
+			NodeList nList = document.getElementsByTagName("option");
+			
+			for(int i = 0; i < nList.getLength(); i++) {
+				Node nNode = nList.item(i);
+				setCodesLanValue(nNode.getTextContent());
+				
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+			Logger.getLogger(Main.class.getName()).log(Level.DEBUG, null, e);
+		}
+		
+	}
+
 	public static void domParserWrite(String convertArr) throws ParserConfigurationException, SAXException, IOException {
 		File inputFile = new File("language\\codes.xml");
 		
@@ -114,6 +171,7 @@ public class Varietyfunction {
 	        transformer.transform(source, result);
 		} catch (Exception e) {
 			e.printStackTrace();
+			Logger.getLogger(Main.class.getName()).log(Level.DEBUG, null, e);
 		}
 		
 	}
@@ -134,7 +192,23 @@ public class Varietyfunction {
 			transformer.transform(new StreamSource(new File(sourcePath)), new StreamResult(new File(resultDir)));
 		} catch (TransformerException e) {
 			e.printStackTrace();
+			Logger.getLogger(Main.class.getName()).log(Level.ERROR, null, e);
 		}
+	}
+//	/TransformerException
+	public static void transformMultiOutput(String sourcePath, String xsltPath, String resultDir, String param) throws TransformerException{
+
+		TransformerFactory factory = TransformerFactory.newInstance();
+		Transformer transformer = factory.newTransformer(new StreamSource(new File(xsltPath)));				
+		transformer.setParameter("targetPath", param);			
+		transformer.setOutputProperty(OutputKeys.ENCODING,"utf-8");
+		transformer.setOutputProperty(OutputKeys.INDENT, "no");
+		transformer.setOutputProperty(OutputKeys.METHOD, "html");			
+		transformer.transform(new StreamSource(new File(sourcePath)), new StreamResult(new File(resultDir)));
+//		e.printStackTrace();
+//		JOptionPane.showMessageDialog(dialog, "Check the folder of your choice  \n for MultiSearch users. " + "MultiSearch XSLT Error", "Execution Fail", JOptionPane.ERROR_MESSAGE);
+//		Logger.getLogger(Main.class.getName()).log(Level.ERROR, null, e);
+		
 	}
 	
 	public static void transformOutput(String sourcePath, String xsltPath, String resultDir, String param) {
@@ -148,7 +222,7 @@ public class Varietyfunction {
 			transformer.transform(new StreamSource(new File(sourcePath)), new StreamResult(new File(resultDir)));
 		} catch (TransformerException e) {
 			e.printStackTrace();
-//			Logger.getLogger(DeltaView.class.getName()).log(Level.DEBUG, null, e);
+			Logger.getLogger(Varietyfunction.class.getName()).log(Level.ERROR, null, e);
 		}
 	}
 	
@@ -161,11 +235,12 @@ public class Varietyfunction {
 			transformer.setOutputProperty(OutputKeys.METHOD, "xml");					
 			transformer.transform(new StreamSource(new File(sourcePath)), new StreamResult(new File(resultDir)));
 		} catch (TransformerException e) {
-			e.printStackTrace();
-//			Logger.getLogger(DeltaView.class.getName()).log(Level.DEBUG, null, e);
+			e.printStackTrace();			
+			Logger.getLogger(Main.class.getName()).log(Level.ERROR, null, e);
 		}
 	}
 	
+
 	public static void batchEx(File batchFilePath) throws Exception{ 
 
 		int result;
@@ -314,7 +389,7 @@ public class Varietyfunction {
 		            File des = new File(despath + file.getName());		            
 		            if (des.exists()) {
 		                System.out.println("des is already exists!");
-		                des.delete();
+		                //des.delete();
 		            }
 		            try {		            	
 		               Files.copy(file.toPath(), des.toPath());		               
@@ -360,6 +435,111 @@ public class Varietyfunction {
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						Logger.getLogger(Main.class.getName()).log(Level.ERROR, null, e);
+					}
+					
+				}
+
+			}
+		}
+	
+	}
+	
+	//파일 구문들 카피
+	public static void templateMultiCopy(File source, File target) throws Exception{
+		
+		File[] ff = source.listFiles(new FileFilter() {
+			
+			@Override
+			public boolean accept(File pathname) {
+
+		        if (pathname.isFile()) {		        	
+		            if (pathname.getAbsolutePath().contains("index.html")) {
+		            	return true;
+		            }else if(pathname.getAbsolutePath().contains("search.html")){
+		            	return true;
+		            }else if(pathname.getAbsolutePath().contains("title.js")){			             
+				        return true;
+		            }else {
+		            	return false;
+		            }
+		        }
+		        
+		        return false;
+		
+			}		
+			
+		});
+		
+		for (File file : ff) {			
+			File temp = new File(target.getAbsolutePath() + File.separator + file.getName());				
+			if(file.isDirectory()){
+				templateMultiCopy(file, temp);			
+			} else {
+				FileInputStream fis = null;
+				FileOutputStream fos = null;
+				try {
+					fis = new FileInputStream(file);
+					fos = new FileOutputStream(temp) ;
+					byte[] b = new byte[4096];
+					int cnt = 0;
+					while((cnt=fis.read(b)) != -1){
+						fos.write(b, 0, cnt);
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				} finally{
+					try {
+						fis.close();
+						fos.close();
+					} catch (IOException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();						
+					}
+					
+				}
+
+			}
+		}
+	
+	}
+	
+	//폴더 구문들 카피
+	public static void templateMultiJsCssCopy(File sourceF, File targetF) throws Exception{		
+		File[] ff = sourceF.listFiles(new FileFilter() {
+			
+			@Override
+			public boolean accept(File pathname) {				
+				return pathname.getAbsolutePath().contains("_jscss");
+			}
+		});
+
+		for (File file : ff) {
+			File temp = new File(targetF.getAbsolutePath() + File.separator + file.getName());			
+			if(file.isDirectory()){
+				temp.mkdir();
+				templateCopy(file, temp);
+			} else {
+				FileInputStream fis = null;
+				FileOutputStream fos = null;
+				try {
+					fis = new FileInputStream(file);
+					fos = new FileOutputStream(temp) ;
+					byte[] b = new byte[4096];
+					int cnt = 0;
+					while((cnt=fis.read(b)) != -1){
+						fos.write(b, 0, cnt);
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				} finally{
+					try {
+						fis.close();
+						fos.close();
+					} catch (IOException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+						Logger.getLogger(Main.class.getName()).log(Level.ERROR, null, e2);
 					}
 					
 				}
@@ -405,6 +585,7 @@ public class Varietyfunction {
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
+								Logger.getLogger(Main.class.getName()).log(Level.ERROR, null, e);
 							}
 							
 						}
@@ -433,6 +614,7 @@ public class Varietyfunction {
 							}
 						} catch (Exception e) {
 							e.printStackTrace();
+							Logger.getLogger(Main.class.getName()).log(Level.ERROR, null, e);
 						} finally{
 							try {
 								fis.close();
@@ -440,6 +622,7 @@ public class Varietyfunction {
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
+								//Logger.getLogger(Main.class.getName()).log(Level.DEBUG, null, e);
 							}
 							
 						}
@@ -535,7 +718,8 @@ public class Varietyfunction {
 		    }
 			return;		
 	}	
-
+	
+	
 	public static List<File> getDirs(File parent, int level){
 	    List<File> dirs = new ArrayList<File>();
 	    File[] files = parent.listFiles();
@@ -544,16 +728,156 @@ public class Varietyfunction {
 	    for (File f : files){
 	        if (f.isDirectory()) {
 	             if (level == 0) {	            	 
-	            	 dirs.add(f);	            	 
-	             }else if (level > 0) { 	            	 
-	            	 dirs.addAll(getDirs(f,level-1));	            	 
+	            	 dirs.add(f);	
+	            	 //System.out.println("getDir Level == 0 ==== : " + dirs);
+	             }else if (level > 0) { 	 	            	 
+	            	 dirs.addAll(getDirs(f,level-1));
+	            	 //System.out.println("getDir Level > 0 ==== : " + dirs);
 	             }
 	        }
 	    }
+	    
+	    return dirs;
+	}
+	
+	public static List<File> getMultiDirs(File parent, int level){
+		
+	    List<File> dirs = new ArrayList<File>();
+	    File[] files = parent.listFiles(new FileFilter() {
+			
+			@Override
+			public boolean accept(File pathname) {
+				
+		        if (pathname.isFile()) {		        	
+		            if (pathname.getAbsolutePath().contains("index.html")) {
+		            	return false;
+		            }else if(pathname.getAbsolutePath().contains("search.html")){
+		            	return false;
+		            }else {			             
+				        return true;
+		            }		            		               
+		        }
+		        
+		        if(pathname.isDirectory()) {
+		        	if(pathname.getAbsolutePath().contains("_jscss")) {
+		        		return false;
+		        	}else if(pathname.getAbsolutePath().contains("_db")) {
+		        		return false;
+		        	}else {
+		        		return true;
+		        	}
+		        }
+		        
+		        return false;
+				
+			}
+		});
+	    
+	    if (files == null) 
+	    	return dirs; // empty dir
+	    for (File f : files){
+	        if (f.isDirectory()) {
+	             if (level == 0) {	            	 
+	            	 dirs.add(f);	
+	            	 //System.out.println("getDir 11111 Level  \n :== 0 ==== : " + dirs);
+	             }else if (level > 0) { 	 	            	 
+	            	 dirs.addAll(getMultiDirs(f,level-1));
+	            	 //System.out.println("getDir 2222 Level > 0 \\n  ==== : " + dirs);
+	             }
+	        }
+	    }
+	    
 	    return dirs;
 	}
 
-	
+	//HTML Parsing
+	public static void htmlParsing(String path) {		
+		File input = new File(path); 		
+
+		multiDocLangDupleRemoveHashList = getMultiDocLangDupleRemoveHashList();			
+		
+		try {
+			if(!input.exists()) {
+				JOptionPane.showMessageDialog(dialog, " The index.html file does not exist. " + "Not Found Error", "Not Found Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			org.jsoup.nodes.Document doc = Jsoup.parse(input, "UTF-8");	
+			doc.charset(StandardCharsets.UTF_8);			
+			//org.jsoup.nodes.Document doc = Jsoup.parse(input, null);
+
+			Elements contents2 = doc.select("#languages");			
+			if(contents2.size() > 0) {				
+
+				Iterator<String> iter = multiDocLangDupleRemoveHashList.iterator();	// Iterator 사용				
+
+				while(iter.hasNext()) {//값이 있으면 true 없으면 false				    
+				    arrMultiLang.add(iter.next());
+				}
+		
+				//arrMultiLang = 사용자가 선택한 탐색기 폴더의 이름들 언어 KRW,FRA (어레리)				
+				//langK_textV = CODES.XML : KEY : VALUE 값 (해쉬맵)ㄴ
+				HashMap<String, String> combinelanguage = new HashMap<>();
+			
+																					
+				for(org.jsoup.nodes.Element el : contents2) {
+					
+					if(el.children().equals("") || el.children().isEmpty())	{
+						//System.out.println("codes.xml Option 태그가 없습니다.");
+						for(int i = 0; i < arrMultiLang.size(); i++) {
+							
+							String sztmp = arrMultiLang.get(i);	
+							
+							if(langK_textV.containsKey(sztmp))
+							{
+								combinelanguage.put(sztmp, langK_textV.get(sztmp));																
+							}else {
+								JOptionPane.showOptionDialog(null, "No matching languages ​​found. \n See codes.xml.", "No matching", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[] { "   OK   "}, JOptionPane.INFORMATION_MESSAGE);
+								return;
+							}
+							el.appendElement("option").attr("value", sztmp).text(langK_textV.get(sztmp));
+							//el.appendElement("option").attr("value", combinelanguage.get(sztmp)).text(langK_textV.get(sztmp));
+						}						
+						
+					}else {
+						el.children().remove();
+						
+						for(int i = 0; i < arrMultiLang.size(); i++) {							
+							String sztmp = arrMultiLang.get(i);	
+							
+							if(langK_textV.containsKey(sztmp))
+							{
+								combinelanguage.put(sztmp, langK_textV.get(sztmp));																
+							}
+							if(el.children() != null) {
+								el.appendElement("option").attr("value", sztmp).text(langK_textV.get(sztmp));									
+							}
+							
+						}
+					}											
+
+				}
+				
+				combinelanguage.clear();
+				arrMultiLang.clear();
+				langK_textV.clear();
+				
+				
+				File file=new File(path);		
+				Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
+					try {
+					    out.write(doc.toString());
+					} finally {
+					    out.close();
+					}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+
+
 	//해당 클래스 파일이 위치한 곳을 불러옴.
 	public static File getResourceAsFile(String resourcePath) {
 		try {
@@ -618,6 +942,62 @@ public class Varietyfunction {
 		}
 	}
 	
+	public static boolean checkSCharacters(String str) {		
+		boolean result = str.matches ("[0-9|a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힝|\\-|_]*");
+
+		return result;
+	}
+	
+	public static void deleteAllMultiFiles(String path) {
+		File file = new File(path); // 폴더내 파일을 배열로 가져온다.
+		File[] tempFile = file.listFiles(new FileFilter() {
+			
+			@Override
+			public boolean accept(File pathname) {	
+		        if (pathname.isFile()) {		        	
+		            if (pathname.getAbsolutePath().contains("index.html")) {
+		            	return true;
+		            }else if(pathname.getAbsolutePath().contains("search.html")){
+		            	return true;
+		            }else if(pathname.getAbsolutePath().contains("title.js")){			             
+				        return true;
+		            }else {
+		            	return false;
+		            }
+		        }
+		        
+		        if(pathname.isDirectory()) {
+		        	if(pathname.getAbsolutePath().contains("_jscss")) {
+		        		return true;
+		        	}else if(pathname.getAbsolutePath().contains("_db")) {
+		        		return true;
+		        	}else {
+		        		return false;
+		        	}
+		        }
+		        
+		        return false;
+		
+			}		
+			
+		});
+
+		if (tempFile.length > 0) {
+			for (int i = 0; i < tempFile.length; i++) {
+				if (tempFile[i].isFile()) {
+					tempFile[i].delete();
+				} else {
+					// 재귀함수
+					deleteAllMultiFiles(tempFile[i].getPath());
+				}
+				tempFile[i].delete();
+
+			}
+			file.delete();
+
+		}
+	}
+	
 	public static void deleteFile(String path) {	
 		File file = new File(path);  
 		if( file.exists() ){
@@ -645,14 +1025,13 @@ public class Varietyfunction {
 	     }
      
 	}
-	
+
 	public static void openFolder(File dirToOpen){
 	    Desktop desktop = Desktop.getDesktop();	    
 	    try {	        
 	        try {
 				desktop.open(dirToOpen);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			} catch (IOException e) {				
 				e.printStackTrace();
 			}
 	    } catch (IllegalArgumentException iae) {
@@ -660,6 +1039,8 @@ public class Varietyfunction {
 	        System.out.println("File Not Found");
 	    }	
 	}
+	
+	
 
 	public static ArrayList<String> getArrTextList() {
 		return arrTextList;
@@ -676,6 +1057,7 @@ public class Varietyfunction {
 	public static void setArrTextList2(ArrayList<String> arrTextList2) {
 		Varietyfunction.arrTextList2 = arrTextList2;
 	}
+
 
 	public static ArrayList<String> getArrFileList() {
 		return arrFileList;
@@ -740,5 +1122,60 @@ public class Varietyfunction {
 	public static void setTest(ArrayList<String> test) {
 		Varietyfunction.test = test;
 	}
+	
+	public static HashSet<String> getMultiDocLangDupleRemoveHashList() {
+		return multiDocLangDupleRemoveHashList;
+	}
+
+	public static void setMultiDocLangDupleRemoveHashList(HashSet<String> multiDocLangDupleRemoveHashList) {
+		Varietyfunction.multiDocLangDupleRemoveHashList = multiDocLangDupleRemoveHashList;
+	}
+	
+	
+
+	public static String getCodesLanValue() {
+		return codesLanValue;
+	}
+
+
+	public static void setCodesLanValue(String codesLanValue) {
+		Varietyfunction.codesLanValue = codesLanValue;
+	}
+
+
+	public static HashMap<String, String> getLangK_textV() {
+		return langK_textV;
+	}
+
+
+	public static void setLangK_textV(HashMap<String, String> langK_textV) {
+		Varietyfunction.langK_textV = langK_textV;
+	}
+
+
+	public static String getLang_Hash_temp() {
+		return lang_Hash_temp;
+	}
+
+
+	public static void setLang_Hash_temp(String lang_Hash_temp) {
+		Varietyfunction.lang_Hash_temp = lang_Hash_temp;
+	}
+
+
+	public static String getText_Hash_temp() {
+		return text_Hash_temp;
+	}
+
+
+	public static void setText_Hash_temp(String text_Hash_temp) {
+		Varietyfunction.text_Hash_temp = text_Hash_temp;
+	}
+
+
+
+
+	
+	
 	
 }

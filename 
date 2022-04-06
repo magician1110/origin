@@ -1,0 +1,48 @@
+[33mcommit 69049e42ce101bc452a53475ee2da416d7bfe99a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: lbw <jerrybw1110@daum.net>
+Date:   Wed Nov 17 17:26:55 2021 +0900
+
+    20211117(web_project_0429, TextFindInFile, Remark_CountV2, MC_Extractor_image, MC_Esitmate_Stamp_V2)
+
+[33mcommit 35157c3087a43fed0e687bb15b55fc9bae803b4c[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: lbw <jerrybw1110@daum.net>
+Date:   Fri Jun 11 10:53:13 2021 +0900
+
+    remark
+
+[33mcommit 182cce21249fbe5a826d0603b93ae9e8824dce62[m
+Author: lbw <jerrybw1110@daum.net>
+Date:   Fri Apr 30 16:47:24 2021 +0900
+
+    workspaceBackUp
+
+[33mcommit 38d927e9f5c3ab8c55570782f7562c2fe103ce15[m
+Author: lbw <jerrybw1110@daum.net>
+Date:   Fri Apr 30 11:40:40 2021 +0900
+
+    workspaceBackUp
+
+[33mcommit ace72170b2131f9a3b7e79ea64a8121929f46fb7[m
+Merge: 931feb8 9ac5886
+Author: lbw <jerrybw1110@daum.net>
+Date:   Fri Apr 30 10:38:24 2021 +0900
+
+    Merge branch 'master' of https://github.com/magician1110/origin
+
+[33mcommit 931feb8de6938541aafb2ef6cf43f1941d7d3f0f[m
+Author: lbw <jerrybw1110@daum.net>
+Date:   Fri Apr 30 10:27:20 2021 +0900
+
+    workspaceBackUp
+
+[33mcommit 9ac58866b73940ba5c33baae84c9e3863a82875c[m
+Author: magician1110 <magician1110@naver.com>
+Date:   Wed Apr 28 14:44:21 2021 +0900
+
+    Create develop
+
+[33mcommit 2b1bc77aaf38300742d34687b013d459a1eb8aa9[m
+Author: lbw <jerrybw1110@daum.net>
+Date:   Wed Apr 28 11:08:50 2021 +0900
+
+    Commit meassage GIT_Test

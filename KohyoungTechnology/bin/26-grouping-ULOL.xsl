@@ -65,7 +65,15 @@
                     <xsl:copy-of select="$flwNote" />
                 </xsl:copy>
             </xsl:when>
-
+            
+            <xsl:when test="parent::*[matches(name(), '(ol|ul)')] and 
+                            parent::*/following-sibling::node()[1][matches(@class, 'note reference')][not(following-sibling::*)]">
+                <xsl:copy>
+                    <xsl:apply-templates select="@*, node()" mode="abc" />
+                    <xsl:copy-of select="$flwNote" />
+                </xsl:copy>
+            </xsl:when>
+            
             <xsl:otherwise>
                 <xsl:copy>
                     <xsl:apply-templates select="@*, node()" mode="abc" />
@@ -87,6 +95,18 @@
                     <xsl:when test="matches($preCla, $flwCla) and 
                                     $preCla/parent::*/@start != $flwCla/parent::*/@start">
                     </xsl:when>
+                    
+                    <xsl:when test="$preCla != $flwCla">
+                    </xsl:when>
+                    
+                    <!--<xsl:when test="parent::*[matches(name(), '(ol|ul)')] and 
+                        parent::*/following-sibling::node()[1][matches(@class, 'note reference')] and 
+                        parent::*/following-sibling::node()[2][not(matches(@class, $cur))]">
+                        <xsl:copy>
+                            <xsl:apply-templates select="@*, node()" mode="abc" />
+                            <xsl:copy-of select="$flwNote" />
+                        </xsl:copy>
+                    </xsl:when>-->
 
                     <xsl:otherwise>
                         <xsl:copy>
@@ -101,7 +121,6 @@
             
             <xsl:when test="matches(@class, 'grouping\-note') and 
                             preceding-sibling::*[1][matches(name(), '(ol|ul)')]">
-                <aaa/>
             </xsl:when>
 
             <xsl:when test="matches(@class, 'note reference') and 

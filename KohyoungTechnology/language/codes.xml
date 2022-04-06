@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><codes TotalLang="KOR, ENG, JPN, CHN">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><codes TotalLang="KOR">
     <option CoverTitle="문서 정보" abbr="ko" lang="KOR" value="Korean">한국어</option>
     <option CoverTitle="About This Document" abbr="en" lang="ENG" value="English">English</option>
     <option CoverTitle="文書情報" abbr="jpn" lang="JPN" value="Jpanese">日本語</option>

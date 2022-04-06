@@ -40,6 +40,12 @@
                 <xsl:variable name="body">
                     <xsl:apply-templates select="* except (*[starts-with(name(),'h')][1], topic)" mode="body" />
                 </xsl:variable>
+                <xsl:variable name="bodyReplace">
+                    <xsl:value-of select="replace(replace(replace(
+                                          $body, '&#xA0;', ' '),
+                                          '\\', '\\\\'),
+                                          '&quot;', '\\x22')"/>
+                </xsl:variable>
                     <xsl:text disable-output-escaping='yes'>&#xA;{&#xA;"toc_id": "</xsl:text>
                     <xsl:value-of select="$toc_id"/>
                     <xsl:text disable-output-escaping='yes'>",&#xA;</xsl:text>
@@ -56,7 +62,7 @@
                     <xsl:value-of select="$title2" />
                     <xsl:text disable-output-escaping='yes'>",&#xA;</xsl:text>
                     <xsl:text disable-output-escaping='yes'> "body": "</xsl:text>
-                    <xsl:value-of select="normalize-space(replace($body, '&#xA0;', ' '))" />
+                <xsl:value-of select="normalize-space($bodyReplace)"  />
 
                     <xsl:choose>
                         <xsl:when test="position()=last()">

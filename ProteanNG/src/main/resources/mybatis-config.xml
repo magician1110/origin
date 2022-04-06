@@ -1,11 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE configuration
-    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<typeAliases>		
-		<typeAlias alias="proteanTable" type="com.tcs.protean.bean.TestBean" />
-	</typeAliases>
+    <settings>
+        <setting name="jdbcTypeForNull" value="NULL" ></setting>    
+    </settings>
+    <typeAliases>
+        <typeAlias type="com.tcs.protean.member.model.vo.Member" alias="Member" />        
+    </typeAliases>
+    
+    <mappers>
+        <mapper resource="mappers/member-mapper.xml" />       
+    </mappers>
+    
+    <!-- 화면창에서 id,password입력값아주고 처리해보면 됨 -->
 </configuration>

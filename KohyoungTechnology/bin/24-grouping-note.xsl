@@ -68,6 +68,15 @@
                     <xsl:with-param name="group" select="$group[position() &gt; 1]" />
                 </xsl:call-template>
             </xsl:when>
+            
+            <xsl:when test="$group[1]/preceding-sibling::*[1][matches(@class, '^note')][not(matches(., '^(\s+)?※'))] and 
+                            $group[1]/following-sibling::*[1][matches(@class, '^note')][not(matches(., '^(\s+)?※'))]">
+                <xsl:apply-templates select="$group[1]" />
+                
+                <xsl:call-template name="grouping">
+                    <xsl:with-param name="group" select="$group[position() &gt; 1]" />
+                </xsl:call-template>
+            </xsl:when>
 
             <xsl:otherwise>
                 <xsl:value-of select="$close" disable-output-escaping="yes" />

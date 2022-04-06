@@ -17,7 +17,8 @@
         <xsl:variable name="str0">
             <xsl:value-of select="$langCode/root()/codes/@TotalLang"/>
         </xsl:variable>
-        <xsl:for-each select="tokenize($str0, ', ')">
+        <xsl:variable name="multiLang" select="if (matches($str0, ', ')) then tokenize($str0, ', ') else $str0"/>
+        <xsl:for-each select="$multiLang">
             <lang>
                 <xsl:value-of select="."/>
             </lang>
@@ -89,13 +90,12 @@
                             </div>
                             <div class="search">
                                 <div class="language">
-                                    <label for="lang">Choose a language: </label>
+                                    <label for="lang"><img src="css/img/Language.svg" /></label>
                                     <select onChange="window.location.href=this.value">
                                         <xsl:for-each select="$langCode[@lang=$selectedLang/lang]">
                                             <xsl:text disable-output-escaping="yes">&lt;option value="../</xsl:text>
                                             <xsl:value-of select="@lang" />
                                             <xsl:text disable-output-escaping="yes">/index.html"</xsl:text>
-                                            
                                             <xsl:choose>
                                                 <xsl:when test="$lang=@lang">
                                                     <xsl:text disable-output-escaping="yes"> selected></xsl:text>

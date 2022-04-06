@@ -1,0 +1,332 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- <%@ page session="true" %> --%>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="resources/css/login.css">
+
+    <link rel="icon" href="resources/img/ast-logo.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <title>Protean</title>
+</head>
+<body>    
+<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+    <div class="container">
+        <a class="navbar-brand">Protean</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <c:choose>
+                <c:when test="${null eq member }">
+                <script type="text/javascript">console.log("null 일 경우 == : " + "널");</script>
+		            <ul class="navbar-nav ml-auto">
+		                <li class="nav-item">		                
+		                    <a class="nav-link" onclick="onSubmit()">Login</a>
+		                </li>
+		                <li class="nav-item"> 
+		                    <!-- href = register 앞에 (/protean/register 이라고 자동으로 붙여주게끔 되어 있음) -->
+		                    <a class="nav-link" href="register">Register</a>		                   
+		                </li>
+		            </ul>
+	            </c:when>	       
+	            <c:when test="${null ne member }">
+	            <script type="text/javascript">
+	            var = member;
+	            console.log("아닐때 == : " +  ${member});
+	            </script>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">                                                                 
+                            <a class="nav-link"> ${member.id} </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- <a class="nav-link" onclick="location.href='go_logout()'">로그아웃</a> -->
+                            <a class="nav-link" href="logout">로그아웃</a>
+                        </li>
+                    </ul>            
+                </c:when>
+            </c:choose>
+        </div>
+    </div>
+</nav>
+
+<p style="text-align: center; height:60px; margin-bottom: 10px; margin-top: 20px">
+<img src="resources/img/ast-logo.png" alt="AST Image" onclick="javascript:location.href='http://localhost:8080/protean';"/>
+</p>
+
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Register Head</div>
+                    <div class="card-body">
+                      <!-- <form action="login.do" method="post"> -->
+                      <form action="login"> 
+                            <div class="form-group row">
+                                <label for="member_id" class="col-md-4 col-form-label text-md-right">ID</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="id" class="form-control" name="id" placeholder="아이디를 입력해 주세요" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <div class="col-md-6">
+                                    <input type="password" id="password" class="form-control" name="password" placeholder="비밀번호를 입력해 주세요" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    <div class="checkbox">
+                                        <labdel>
+                                            <input type="checkbox" name="remember"> Remember Me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary" onclick="onSubmit()">
+                                    Login
+                                </button>
+                                <a class="btn btn-link">
+                                    Forgot Your Password?
+                                </a>
+                            </div>
+                    </div>
+                      </form>  
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</main>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+function onEnterSubmit() {
+
+    var keyCode = window.event.keyCode;
+    
+    if (keyCode == 13) {
+        onSubmit();    
+    	//go_login();
+    }
+}
+
+
+  function onSubmit() {
+
+      var member = {
+              id : $('input[name=id]').val(),
+              password: $('input[name=password]').val()
+      };     
+
+      $.ajax({
+          type : "POST",
+          url : "login.do",
+          data : member,
+          dataType : "text",
+          beforeSend : function(xhr){
+              xhr.setRequestHeader("AJAX", "true"); 
+              xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+          },
+          success: function(msg, textStatus, xhr) {
+              if(msg == 'true') {
+                  alert("로그인이 성공하였습니다!!");
+                 /* 로그인이 완료된 경우 돌아갈 페이지 */
+                  //window.location.replace("main.do");
+                  window.location.href = "main.html";
+              } else {
+                  alert("아이디 또는 비밀번호가 잘못되었습니다!!");
+                  window.location.reload();
+                  //return;
+              }
+          },
+          error:function(request, status, error){
+              alert("code:" + request.status + "\n" + "error:" + error);
+          }
+      });
+      return false;
+
+	}
+	
+function SHA256(s) {
+
+    var chrsz = 8;
+    var hexcase = 0;
+
+    function safe_add(x, y) {
+        var lsw = (x & 0xFFFF) + (y & 0xFFFF);
+        var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+        return (msw << 16) | (lsw & 0xFFFF);
+    }
+
+    function S(X, n) {
+        return (X >>> n) | (X << (32 - n));
+    }
+    function R(X, n) {
+        return (X >>> n);
+    }
+    function Ch(x, y, z) {
+        return ((x & y) ^ ((~x) & z));
+    }
+    function Maj(x, y, z) {
+        return ((x & y) ^ (x & z) ^ (y & z));
+    }
+    function Sigma0256(x) {
+        return (S(x, 2) ^ S(x, 13) ^ S(x, 22));
+    }
+    function Sigma1256(x) {
+        return (S(x, 6) ^ S(x, 11) ^ S(x, 25));
+    }
+    function Gamma0256(x) {
+        return (S(x, 7) ^ S(x, 18) ^ R(x, 3));
+    }
+    function Gamma1256(x) {
+        return (S(x, 17) ^ S(x, 19) ^ R(x, 10));
+    }
+
+    function core_sha256(m, l) {
+
+        var K = new Array(0x428A2F98, 0x71374491, 0xB5C0FBCF, 0xE9B5DBA5,
+                0x3956C25B, 0x59F111F1, 0x923F82A4, 0xAB1C5ED5, 0xD807AA98,
+                0x12835B01, 0x243185BE, 0x550C7DC3, 0x72BE5D74, 0x80DEB1FE,
+                0x9BDC06A7, 0xC19BF174, 0xE49B69C1, 0xEFBE4786, 0xFC19DC6,
+                0x240CA1CC, 0x2DE92C6F, 0x4A7484AA, 0x5CB0A9DC, 0x76F988DA,
+                0x983E5152, 0xA831C66D, 0xB00327C8, 0xBF597FC7, 0xC6E00BF3,
+                0xD5A79147, 0x6CA6351, 0x14292967, 0x27B70A85, 0x2E1B2138,
+                0x4D2C6DFC, 0x53380D13, 0x650A7354, 0x766A0ABB, 0x81C2C92E,
+                0x92722C85, 0xA2BFE8A1, 0xA81A664B, 0xC24B8B70, 0xC76C51A3,
+                0xD192E819, 0xD6990624, 0xF40E3585, 0x106AA070, 0x19A4C116,
+                0x1E376C08, 0x2748774C, 0x34B0BCB5, 0x391C0CB3, 0x4ED8AA4A,
+                0x5B9CCA4F, 0x682E6FF3, 0x748F82EE, 0x78A5636F, 0x84C87814,
+                0x8CC70208, 0x90BEFFFA, 0xA4506CEB, 0xBEF9A3F7, 0xC67178F2);
+
+        var HASH = new Array(0x6A09E667, 0xBB67AE85, 0x3C6EF372,
+                0xA54FF53A, 0x510E527F, 0x9B05688C, 0x1F83D9AB, 0x5BE0CD19);
+
+        var W = new Array(64);
+        var a, b, c, d, e, f, g, h, i, j;
+        var T1, T2;
+
+        m[l >> 5] |= 0x80 << (24 - l % 32);
+        m[((l + 64 >> 9) << 4) + 15] = l;
+
+        for (var i = 0; i < m.length; i += 16) {
+            a = HASH[0];
+            b = HASH[1];
+            c = HASH[2];
+            d = HASH[3];
+            e = HASH[4];
+            f = HASH[5];
+            g = HASH[6];
+            h = HASH[7];
+
+            for (var j = 0; j < 64; j++) {
+                if (j < 16)
+                    W[j] = m[j + i];
+                else
+                    W[j] = safe_add(safe_add(safe_add(Gamma1256(W[j - 2]),
+                            W[j - 7]), Gamma0256(W[j - 15])), W[j - 16]);
+
+                T1 = safe_add(safe_add(safe_add(safe_add(h, Sigma1256(e)),
+                        Ch(e, f, g)), K[j]), W[j]);
+                T2 = safe_add(Sigma0256(a), Maj(a, b, c));
+
+                h = g;
+                g = f;
+                f = e;
+                e = safe_add(d, T1);
+                d = c;
+                c = b;
+                b = a;
+                a = safe_add(T1, T2);
+            }
+
+            HASH[0] = safe_add(a, HASH[0]);
+            HASH[1] = safe_add(b, HASH[1]);
+            HASH[2] = safe_add(c, HASH[2]);
+            HASH[3] = safe_add(d, HASH[3]);
+            HASH[4] = safe_add(e, HASH[4]);
+            HASH[5] = safe_add(f, HASH[5]);
+            HASH[6] = safe_add(g, HASH[6]);
+            HASH[7] = safe_add(h, HASH[7]);
+        }
+        return HASH;
+    }
+
+    function str2binb(str) {
+        var bin = Array();
+        var mask = (1 << chrsz) - 1;
+        for (var i = 0; i < str.length * chrsz; i += chrsz) {
+            bin[i >> 5] |= (str.charCodeAt(i / chrsz) & mask) << (24 - i % 32);
+        }
+        return bin;
+    }
+
+    function Utf8Encode(string) {
+        string = string.replace(/\r\n/g, "\n");
+        var utftext = "";
+
+        for (var n = 0; n < string.length; n++) {
+
+            var c = string.charCodeAt(n);
+
+            if (c < 128) {
+                utftext += String.fromCharCode(c);
+            } else if ((c > 127) && (c < 2048)) {
+                utftext += String.fromCharCode((c >> 6) | 192);
+                utftext += String.fromCharCode((c & 63) | 128);
+            } else {
+                utftext += String.fromCharCode((c >> 12) | 224);
+                utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+                utftext += String.fromCharCode((c & 63) | 128);
+            }
+
+        }
+
+        return utftext;
+    }
+
+    function binb2hex(binarray) {
+        var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
+        var str = "";
+        for (var i = 0; i < binarray.length * 4; i++) {
+            str += hex_tab
+                    .charAt((binarray[i >> 2] >> ((3 - i % 4) * 8 + 4)) & 0xF)
+                    + hex_tab
+                            .charAt((binarray[i >> 2] >> ((3 - i % 4) * 8)) & 0xF);
+        }
+        return str;
+    }
+
+    s = Utf8Encode(s);
+    return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
+
+}
+</script>

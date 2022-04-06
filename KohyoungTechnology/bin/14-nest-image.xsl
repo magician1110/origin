@@ -20,7 +20,7 @@
     <xsl:template match="p">
         <xsl:choose>
             <xsl:when test="matches(@class, '(^OL|^UL|^note)')">
-                <xsl:variable name="flw_img" select="following-sibling::node()[1][self::ImgGroup] | following-sibling::node()[1][self::img]" />
+                <xsl:variable name="flw_img" select="following-sibling::node()[1][self::ImgGroup] | following-sibling::node()[1][self::img][not(matches(@class, 'excNote'))]" />
 
                 <xsl:copy>
                     <xsl:apply-templates select="@*, node()" />
@@ -75,7 +75,8 @@
             </xsl:choose>
         </xsl:variable>
         <xsl:choose>
-            <xsl:when test="preceding-sibling::node()[1][self::p[matches(@class, '(^OL|^UL|^note)')]]">
+            <xsl:when test="not(matches(@class, 'excNote')) and 
+                            preceding-sibling::node()[1][self::p[matches(@class, '(^OL|^UL|^note)')]]">
             </xsl:when>
 
             <xsl:otherwise>

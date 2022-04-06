@@ -70,7 +70,6 @@
             <xsl:choose>
                 <xsl:when test="count(tokenize($cur, ' ')) &gt; 1">
                     <xsl:for-each select="tokenize($cur, ' ')">
-                        
                         <xsl:value-of select="concat('ast', position(), '-')" />
                         <xsl:value-of select="." />
                         <xsl:if test="position() != last()">

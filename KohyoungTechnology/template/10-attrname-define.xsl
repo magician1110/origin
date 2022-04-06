@@ -73,7 +73,7 @@
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template match="b">
+    <xsl:template match="*[matches(name(), '(b|strong)')]">
         <xsl:choose>
             <xsl:when test="not(string(normalize-space(.))) and not(*)">
             </xsl:when>

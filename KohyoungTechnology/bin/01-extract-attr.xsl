@@ -76,7 +76,7 @@
                 <xsl:value-of select="regex-group(0)" />
             </xsl:matching-substring>
             <xsl:non-matching-substring>
-                <xsl:analyze-string select="." regex="(&lt;)([\w+\s+\.\-&apos;&quot;;:#=%,_/\(\)]+?)(&gt;)">
+                <xsl:analyze-string select="." regex="(&lt;)([\w+\s+\.\-&apos;&quot;;:#=%,_/\(\)&amp;gt;]+?)(&gt;)">
                     <xsl:matching-substring>
                         <xsl:variable name="str0">
                             <T>

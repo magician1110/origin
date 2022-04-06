@@ -17,7 +17,8 @@
         <xsl:variable name="str0">
             <xsl:value-of select="$langCode/root()/codes/@TotalLang"/>
         </xsl:variable>
-        <xsl:for-each select="tokenize($str0, ', ')">
+        <xsl:variable name="multiLang" select="if (matches($str0, ', ')) then tokenize($str0, ', ') else $str0"/>
+        <xsl:for-each select="$multiLang">
             <lang>
                 <xsl:value-of select="."/>
             </lang>
